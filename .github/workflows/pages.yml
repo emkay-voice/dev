@@ -1,0 +1,68 @@
+# dev.emkay.ai: the page, the template catalog and the Emkay Dev extension.
+#
+#   templates/   templates.json's repositories, ready for "Emkay: New skill"
+#                (tools/build_templates.mjs)
+#   vscode/      the extension (emkay-voice/vscode-emkay, built), for VS Code
+#                for the Web's "Install Extension from Location…" until it is
+#                on the Marketplace / Open VSX
+#
+# Built on every push, every night (a template or the extension may have
+# changed), by hand, and when vscode-emkay or a template asks
+# (repository_dispatch "rebuild").
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [rebuild]
+  schedule:
+    - cron: "41 4 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: emkay-voice/vscode-emkay
+          path: ext
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: The page
+        run: |
+          mkdir -p _site
+          cp index.html texts.js icon.svg CNAME _site/
+      - name: The template catalog
+        run: node tools/build_templates.mjs _site/templates
+      - name: The extension
+        run: |
+          (cd ext && node tools/build.mjs)
+          mkdir -p _site/vscode
+          cp -r ext/package.json ext/package.nls*.json ext/README.md ext/LICENSE ext/dist ext/l10n ext/media _site/vscode/ 2>/dev/null || true
+          ls -R _site/vscode | head -40
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

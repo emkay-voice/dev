@@ -1,0 +1,72 @@
+[
+  {
+    "id": "skill",
+    "kind": "skill",
+    "icon": "👋",
+    "repo": "emkay-voice/skill-template",
+    "ref": "main",
+    "name": {
+      "en": "A plain skill", "da": "En almindelig skill", "de": "Ein einfacher Skill", "nl": "Een gewone skill",
+      "fr": "Une skill simple", "es": "Una skill sencilla", "it": "Una skill semplice", "pt-BR": "Uma skill simples",
+      "pt-PT": "Uma skill simples", "ca": "Una skill senzilla", "gl": "Unha skill sinxela", "eu": "Skill arrunt bat"
+    },
+    "description": {
+      "en": "Say a sentence, get an answer – the smallest skill there is, in all of Emkay's languages.",
+      "da": "Sig en sætning, få et svar – den mindste skill der findes, på alle Emkays sprog.",
+      "de": "Sag einen Satz, bekomm eine Antwort – der kleinste Skill, den es gibt, in allen Sprachen von Emkay.",
+      "nl": "Zeg een zin, krijg een antwoord – de kleinste skill die er is, in alle talen van Emkay.",
+      "fr": "Dites une phrase, recevez une réponse – la plus petite skill qui soit, dans toutes les langues d'Emkay.",
+      "es": "Di una frase, recibe una respuesta – la skill más pequeña que existe, en todos los idiomas de Emkay.",
+      "it": "Di' una frase, ricevi una risposta – la skill più piccola che ci sia, in tutte le lingue di Emkay.",
+      "pt-BR": "Diga uma frase, receba uma resposta – a menor skill que existe, em todos os idiomas do Emkay.",
+      "pt-PT": "Diga uma frase, receba uma resposta – a skill mais pequena que existe, em todas as línguas do Emkay.",
+      "ca": "Digues una frase, rep una resposta – la skill més petita que hi ha, en tots els idiomes de l'Emkay.",
+      "gl": "Di unha frase, recibe unha resposta – a skill máis pequena que hai, en todos os idiomas do Emkay.",
+      "eu": "Esan esaldi bat, jaso erantzun bat – dagoen skill txikiena, Emkayren hizkuntza guztietan."
+    },
+    "replace": [
+      ["ovos-skill-hello.emkay-voice", "{{id}}"],
+      ["ovos_skill_hello", "{{module}}"],
+      ["ovos-skill-hello", "{{name}}"],
+      ["HelloSkill", "{{Class}}"],
+      ["emkay-voice/skill-template", "{{repo}}"],
+      ["authors = [{name = \"emkay-voice\"}]", "authors = [{name = \"{{author}}\"}]"]
+    ],
+    "skip": [".github/workflows/make-it-yours.yml"]
+  },
+  {
+    "id": "common-reading",
+    "kind": "reading",
+    "icon": "📖",
+    "repo": "andlo/ovos-skill-common-reading-example",
+    "ref": "main",
+    "name": {
+      "en": "A reading provider", "da": "En oplæsnings-udbyder", "de": "Ein Vorlese-Anbieter", "nl": "Een voorleesaanbieder",
+      "fr": "Un fournisseur de lecture", "es": "Un proveedor de lectura", "it": "Un fornitore di letture", "pt-BR": "Um provedor de leitura",
+      "pt-PT": "Um fornecedor de leitura", "ca": "Un proveïdor de lectura", "gl": "Un provedor de lectura", "eu": "Irakurketa-hornitzaile bat"
+    },
+    "description": {
+      "en": "Emkay reads your content aloud – a feed, a web page, stories – through ovos-common-reading-pipeline-plugin. Shows the RSS and the HTML pattern.",
+      "da": "Emkay læser dit indhold op – et feed, en webside, historier – via ovos-common-reading-pipeline-plugin. Viser RSS- og HTML-mønstret.",
+      "de": "Emkay liest deine Inhalte vor – einen Feed, eine Webseite, Geschichten – über ovos-common-reading-pipeline-plugin. Zeigt das RSS- und das HTML-Muster.",
+      "nl": "Emkay leest je inhoud voor – een feed, een webpagina, verhalen – via ovos-common-reading-pipeline-plugin. Laat het RSS- en het HTML-patroon zien.",
+      "fr": "Emkay lit votre contenu à voix haute – un flux, une page web, des histoires – via ovos-common-reading-pipeline-plugin. Montre les modèles RSS et HTML.",
+      "es": "Emkay lee tu contenido en voz alta – un feed, una página web, cuentos – mediante ovos-common-reading-pipeline-plugin. Muestra los patrones RSS y HTML.",
+      "it": "Emkay legge ad alta voce i tuoi contenuti – un feed, una pagina web, storie – tramite ovos-common-reading-pipeline-plugin. Mostra lo schema RSS e quello HTML.",
+      "pt-BR": "O Emkay lê seu conteúdo em voz alta – um feed, uma página web, histórias – pelo ovos-common-reading-pipeline-plugin. Mostra os padrões RSS e HTML.",
+      "pt-PT": "O Emkay lê o seu conteúdo em voz alta – um feed, uma página web, histórias – através do ovos-common-reading-pipeline-plugin. Mostra os padrões RSS e HTML.",
+      "ca": "L'Emkay llegeix el teu contingut en veu alta – un feed, una pàgina web, contes – amb ovos-common-reading-pipeline-plugin. Mostra els patrons RSS i HTML.",
+      "gl": "O Emkay le o teu contido en voz alta – un feed, unha páxina web, contos – co ovos-common-reading-pipeline-plugin. Mostra os padróns RSS e HTML.",
+      "eu": "Emkayk zure edukia ozen irakurtzen du – jario bat, web-orri bat, ipuinak – ovos-common-reading-pipeline-plugin bidez. RSS eta HTML ereduak erakusten ditu."
+    },
+    "replace": [
+      ["andlo/ovos-skill-common-reading-example", "{{repo}}"],
+      ["ovos-skill-common-reading-example.andlo", "{{id}}"],
+      ["ovos-skill-common-reading-example", "{{name}}"],
+      ["ovos_skill_common_reading_example", "{{module}}"],
+      ["CommonReadingExample", "{{Class}}"],
+      ["\"author\": \"andlo\"", "\"author\": \"{{author}}\""]
+    ],
+    "skip": []
+  }
+]
