@@ -776,3 +776,19 @@ TEXTS.eu = {
   f_store: "Skill-denda",
   f_note: "Emkay OpenVoiceOS-en gainean eraikita dago. Doakoa eta kode irekikoa (Apache 2.0).",
 };
+
+// The template skill's own sentences (emkay-voice/skill-template, locale/<lang>/),
+// for the demo and "What is in a skill": the same as New skill writes.
+// Made from the template; keep them in step with it.
+Object.assign(TEXTS.en, {"ex_lang": "en-US", "ex_intent1": "hello from my skill", "ex_intent2": "run my first skill", "ex_dialog": "Hello! This answer comes from your very own skill."});
+Object.assign(TEXTS.da, {"ex_lang": "da-DK", "ex_intent1": "hej fra min skill", "ex_intent2": "kør min første skill", "ex_dialog": "Hej! Dette svar kommer fra din helt egen skill."});
+Object.assign(TEXTS.de, {"ex_lang": "de-DE", "ex_intent1": "hallo von meinem skill", "ex_intent2": "starte meinen ersten skill", "ex_dialog": "Hallo! Diese Antwort kommt von deinem ganz eigenen Skill."});
+Object.assign(TEXTS.nl, {"ex_lang": "nl-NL", "ex_intent1": "hallo van mijn skill", "ex_intent2": "start mijn eerste skill", "ex_dialog": "Hallo! Dit antwoord komt van je eigen skill."});
+Object.assign(TEXTS.fr, {"ex_lang": "fr-FR", "ex_intent1": "bonjour de ma skill", "ex_intent2": "lance ma première skill", "ex_dialog": "Bonjour ! Cette réponse vient de votre propre skill."});
+Object.assign(TEXTS.es, {"ex_lang": "es-ES", "ex_intent1": "hola desde mi skill", "ex_intent2": "ejecuta mi primera skill", "ex_dialog": "¡Hola! Esta respuesta viene de tu propia skill."});
+Object.assign(TEXTS.it, {"ex_lang": "it-IT", "ex_intent1": "ciao dalla mia skill", "ex_intent2": "avvia la mia prima skill", "ex_dialog": "Ciao! Questa risposta viene dalla tua skill."});
+Object.assign(TEXTS["pt-BR"], {"ex_lang": "pt-BR", "ex_intent1": "olá da minha skill", "ex_intent2": "rode minha primeira skill", "ex_dialog": "Olá! Esta resposta vem da sua própria skill."});
+Object.assign(TEXTS["pt-PT"], {"ex_lang": "pt-PT", "ex_intent1": "olá da minha skill", "ex_intent2": "executa a minha primeira skill", "ex_dialog": "Olá! Esta resposta vem da sua própria skill."});
+Object.assign(TEXTS.ca, {"ex_lang": "ca-ES", "ex_intent1": "hola des de la meva skill", "ex_intent2": "executa la meva primera skill", "ex_dialog": "Hola! Aquesta resposta ve de la teva pròpia skill."});
+Object.assign(TEXTS.gl, {"ex_lang": "gl-ES", "ex_intent1": "ola dende a miña skill", "ex_intent2": "executa a miña primeira skill", "ex_dialog": "Ola! Esta resposta vén da túa propia skill."});
+Object.assign(TEXTS.eu, {"ex_lang": "eu-ES", "ex_intent1": "kaixo nire skilletik", "ex_intent2": "exekutatu nire lehen skilla", "ex_dialog": "Kaixo! Erantzun hau zure skilletik dator."});

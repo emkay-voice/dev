@@ -86,7 +86,7 @@
   .copy.done::after { content: " ✓"; color: var(--good); }
   .files { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
   .file { background: #0d1116; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  .file .name { background: #1b2430; padding: 6px 12px; font: 13px ui-monospace, Menlo, monospace; color: var(--soft); }
+  .file .name { background: #1b2430; padding: 6px 12px; font: 13px ui-monospace, Menlo, monospace; color: var(--soft); overflow-wrap: anywhere; }
   .file pre { margin: 0; padding: 10px 12px; font: 13px/1.5 ui-monospace, Menlo, monospace; color: #d4d4d4; white-space: pre-wrap; }
   .file p { margin: 0; padding: 0 12px 12px; color: var(--muted); font-size: 14px; }
   .tpl .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
@@ -124,8 +124,8 @@
     <text class="tabtxt" x="20" y="48">hello.intent</text>
     <text class="tabtxt" x="140" y="48" opacity=".6">__init__.py</text>
     <g class="code">
-      <text x="14" y="84"><tspan fill="#858585">1  </tspan>hello from my skill</text>
-      <text x="14" y="106"><tspan fill="#858585">2  </tspan>run my first skill</text>
+      <text x="14" y="84"><tspan fill="#858585">1  </tspan><tspan data-t="ex_intent1"></tspan></text>
+      <text x="14" y="106"><tspan fill="#858585">2  </tspan><tspan data-t="ex_intent2"></tspan></text>
       <text x="14" y="128"><tspan fill="#858585">3  </tspan><tspan class="new" id="typed"></tspan><tspan class="cursor">▍</tspan></text>
       <text x="14" y="190" fill="#858585">__init__.py</text>
       <text x="14" y="214"><tspan class="f">@intent_handler</tspan>(<tspan class="s">"hello.intent"</tspan>)</text>
@@ -192,18 +192,17 @@
 <h2 data-t="skill_h"></h2>
 <p class="lead" data-t="skill_lead"></p>
 <div class="files">
-  <div class="file"><div class="name">locale/en-US/hello.intent</div>
-    <pre>hello from my skill
-run my first skill</pre><p data-t="file_intent"></p></div>
-  <div class="file"><div class="name">locale/en-US/hello.dialog</div>
-    <pre>Hello! This answer comes from
-your very own skill.</pre><p data-t="file_dialog"></p></div>
+  <div class="file"><div class="name">locale/<span data-t="ex_lang"></span>/hello.intent</div>
+    <pre><span data-t="ex_intent1"></span>
+<span data-t="ex_intent2"></span></pre><p data-t="file_intent"></p></div>
+  <div class="file"><div class="name">locale/<span data-t="ex_lang"></span>/hello.dialog</div>
+    <pre data-t="ex_dialog"></pre><p data-t="file_dialog"></p></div>
   <div class="file"><div class="name">__init__.py</div>
     <pre>@intent_handler("hello.intent")
 def handle_hello(self, message):
     self.speak_dialog("hello")</pre><p data-t="file_code"></p></div>
-  <div class="file"><div class="name">test/end2end/golden_utterances_en-US.jsonl</div>
-    <pre>{"utterance": "run my first skill",
+  <div class="file"><div class="name">test/end2end/golden_utterances_<span data-t="ex_lang"></span>.jsonl</div>
+    <pre>{"utterance": "<span data-t="ex_intent2"></span>",
  "intent_label": "hello.intent", …}</pre><p data-t="file_golden"></p></div>
 </div>
 
