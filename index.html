@@ -67,6 +67,10 @@
   h2 { font-weight: 500; font-size: 24px; margin: 48px 0 12px; }
   .lead { color: var(--soft); margin: 0 0 16px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 22px; }
+  .card.watch { display: flex; gap: 22px; align-items: flex-start; padding: 18px 22px; }
+  .card.watch img { width: 240px; height: auto; border-radius: 14px; flex: none; }
+  .card.watch p { margin: 0 0 12px; }
+  @media (max-width: 640px) { .card.watch { flex-direction: column; align-items: center; } }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
   .cards .card { padding: 16px 20px; display: flex; flex-direction: column; }
   .cards h3 { margin: 0 0 6px; font-size: 17px; }
@@ -214,6 +218,17 @@ def handle_hello(self, message):
 <h2 data-t="tests_h"></h2>
 <div class="card"><p data-t="tests_p"></p></div>
 
+<!-- What's happening? in Emkay (emkay#50): the first place to look when a
+     skill does not answer; the screenshot follows the page's language -->
+<h2 id="watch" data-t="watch_h"></h2>
+<div class="card watch">
+  <img id="watch-shot" src="img/activity-en.png" data-t-alt="watch_alt" width="500" height="789" loading="lazy">
+  <div>
+    <p data-t="watch_p"></p>
+    <p class="small" data-t="watch_note"></p>
+  </div>
+</div>
+
 <!-- the skill on your own phone: from GitHub, with Emkay: Send to my Emkay
      (vscode-emkay) and Emkay's ?install=github:owner/repo (emkay#49) -->
 <h2 id="github" data-t="phone_h"></h2>
@@ -307,6 +322,9 @@ function render() {
   document.querySelector('meta[name="description"]').content = t("description");
   // texts may hold <b>, <code>, <kbd> and links: they are ours, from texts.js
   document.querySelectorAll("[data-t]").forEach((el) => { el.innerHTML = t(el.dataset.t); });
+  document.querySelectorAll("[data-t-alt]").forEach((el) => { el.alt = t(el.dataset.tAlt); });
+  // the What's happening? screenshot: Danish for Danish, else English
+  document.getElementById("watch-shot").src = lang === "da" ? "img/activity-da.png" : "img/activity-en.png";
   renderTemplates();
 }
 
