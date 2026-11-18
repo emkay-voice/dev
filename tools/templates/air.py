@@ -1,5 +1,5 @@
 """Template: ask the web – air quality and UV from Open-Meteo (no key needed)."""
-NAME, MODULE, CLASS, REPO = "ovos-skill-air-quality", "ovos_skill_air_quality", "AirQualitySkill", "emkay-voice/template-web"
+NAME, MODULE, CLASS, REPO = "ovos-skill-air-quality-example", "ovos_skill_air_quality_example", "AirQualitySkill", "emkay-voice/ovos-skill-air-quality-example"
 SUMMARY = "Asks a web service (Open-Meteo) how clean the air is and how strong the sun is where you are"
 KEYWORDS = ["air quality", "uv", "open-meteo", "web api"]
 DEPENDENCIES = ["requests"]

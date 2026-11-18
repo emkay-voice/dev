@@ -1,5 +1,5 @@
 """Template: a quiz – the skill asks, you answer (get_response, ask_yesno)."""
-NAME, MODULE, CLASS, REPO = "ovos-skill-quiz", "ovos_skill_quiz", "QuizSkill", "emkay-voice/template-quiz"
+NAME, MODULE, CLASS, REPO = "ovos-skill-quiz-example", "ovos_skill_quiz_example", "QuizSkill", "emkay-voice/ovos-skill-quiz-example"
 SUMMARY = "A small quiz: the skill asks questions and listens for your answers"
 KEYWORDS = ["quiz", "game", "questions"]
 DEPENDENCIES = []

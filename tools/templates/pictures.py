@@ -1,5 +1,5 @@
 """Template: pictures on the screen – a dog or a cat, from free web services."""
-NAME, MODULE, CLASS, REPO = "ovos-skill-pictures", "ovos_skill_pictures", "PicturesSkill", "emkay-voice/template-screen"
+NAME, MODULE, CLASS, REPO = "ovos-skill-pictures-example", "ovos_skill_pictures_example", "PicturesSkill", "emkay-voice/ovos-skill-pictures-example"
 SUMMARY = "Shows a picture on the screen: a dog or a cat, from free web services"
 KEYWORDS = ["gui", "screen", "pictures", "dog", "cat"]
 DEPENDENCIES = ["requests"]

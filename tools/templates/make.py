@@ -9,7 +9,7 @@ What they share comes from skill-template itself (its .devcontainer, .vscode,
 workflows, LICENSE, .gitignore), with the names swapped; what is the
 template's own is in tools/templates/<id>.py:
 
-    NAME, MODULE, CLASS, REPO   ovos-skill-quiz, ovos_skill_quiz, QuizSkill, emkay-voice/template-quiz
+    NAME, MODULE, CLASS, REPO   ovos-skill-quiz-example, ovos_skill_quiz_example, QuizSkill, emkay-voice/ovos-skill-quiz-example
     SUMMARY, KEYWORDS, DEPENDENCIES
     CODE                        the package's __init__.py
     LOCALE                      {lang: {file name: text}}  (every language the same files)
@@ -114,6 +114,16 @@ addopts = "--import-mode=importlib"
 testpaths = ["tests"]
 '''
 
+ABOUT = '''
+## A working skill, and a template
+
+This is a complete OpenVoiceOS skill – install it and it works – and an
+example to start your own from: *Use this template* on GitHub, or
+*Emkay: New skill* in VS Code ([Emkay Dev](https://dev.emkay.ai)), which
+gives it your own names. Made for [Emkay](https://emkay.ai), it runs on any
+OpenVoiceOS.
+'''
+
 WHEN_IT_WORKS = '''
 ## Try it
 
@@ -209,7 +219,7 @@ def make(tid, out, base):
         keywords=json.dumps(["ovos", "openvoiceos", "skill", "emkay", *s.KEYWORDS]),
         deps="\n".join(f'    "{d}",' for d in ["ovos-workshop>=0.0.15,<10.0.0", *s.DEPENDENCIES]),
         repo=s.REPO, id=sid, module=s.MODULE, cls=s.CLASS))
-    (out / "README.md").write_text(s.README.strip("\n") + "\n" + WHEN_IT_WORKS)
+    (out / "README.md").write_text(s.README.strip("\n") + "\n" + ABOUT + WHEN_IT_WORKS)
     for rel, text in getattr(s, "FILES", {}).items():
         (out / rel).parent.mkdir(parents=True, exist_ok=True)
         (out / rel).write_text(text)

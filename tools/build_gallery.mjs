@@ -24,7 +24,7 @@ const token = process.env.GITHUB_TOKEN;
 const hidden = new Set(JSON.parse(fs.readFileSync(new URL("../gallery-hidden.json", import.meta.url), "utf8"))
   .map((h) => h.repo.toLowerCase()));
 // the templates themselves are on the page already
-const OURS = /^emkay-voice\/(skill-template|template-.*)$/i;
+const OURS = /^emkay-voice\/(skill-template|template-.*|ovos-skill-[a-z0-9-]+-example)$/i;
 const MAX = 300;
 const TOPIC = process.env.GALLERY_TOPIC || "emkay-skill";   // another topic only to try it out
 

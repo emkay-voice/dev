@@ -67,7 +67,7 @@
     "id": "quiz",
     "kind": "skill",
     "icon": "🧠",
-    "repo": "emkay-voice/template-quiz",
+    "repo": "emkay-voice/ovos-skill-quiz-example",
     "ref": "main",
     "name": {
       "en": "A quiz",
@@ -99,15 +99,15 @@
     },
     "replace": [
       [
-        "ovos-skill-quiz.emkay-voice",
+        "ovos-skill-quiz-example.emkay-voice",
         "{{id}}"
       ],
       [
-        "ovos_skill_quiz",
+        "ovos_skill_quiz_example",
         "{{module}}"
       ],
       [
-        "ovos-skill-quiz",
+        "ovos-skill-quiz-example",
         "{{name}}"
       ],
       [
@@ -115,7 +115,7 @@
         "{{Class}}"
       ],
       [
-        "emkay-voice/template-quiz",
+        "emkay-voice/ovos-skill-quiz-example",
         "{{repo}}"
       ],
       [
@@ -131,7 +131,7 @@
     "id": "web",
     "kind": "skill",
     "icon": "🌍",
-    "repo": "emkay-voice/template-web",
+    "repo": "emkay-voice/ovos-skill-air-quality-example",
     "ref": "main",
     "name": {
       "en": "Ask the web",
@@ -163,15 +163,15 @@
     },
     "replace": [
       [
-        "ovos-skill-air-quality.emkay-voice",
+        "ovos-skill-air-quality-example.emkay-voice",
         "{{id}}"
       ],
       [
-        "ovos_skill_air_quality",
+        "ovos_skill_air_quality_example",
         "{{module}}"
       ],
       [
-        "ovos-skill-air-quality",
+        "ovos-skill-air-quality-example",
         "{{name}}"
       ],
       [
@@ -179,7 +179,7 @@
         "{{Class}}"
       ],
       [
-        "emkay-voice/template-web",
+        "emkay-voice/ovos-skill-air-quality-example",
         "{{repo}}"
       ],
       [
@@ -195,7 +195,7 @@
     "id": "screen",
     "kind": "skill",
     "icon": "🖼️",
-    "repo": "emkay-voice/template-screen",
+    "repo": "emkay-voice/ovos-skill-pictures-example",
     "ref": "main",
     "name": {
       "en": "Pictures on the screen",
@@ -227,15 +227,15 @@
     },
     "replace": [
       [
-        "ovos-skill-pictures.emkay-voice",
+        "ovos-skill-pictures-example.emkay-voice",
         "{{id}}"
       ],
       [
-        "ovos_skill_pictures",
+        "ovos_skill_pictures_example",
         "{{module}}"
       ],
       [
-        "ovos-skill-pictures",
+        "ovos-skill-pictures-example",
         "{{name}}"
       ],
       [
@@ -243,7 +243,7 @@
         "{{Class}}"
       ],
       [
-        "emkay-voice/template-screen",
+        "emkay-voice/ovos-skill-pictures-example",
         "{{repo}}"
       ],
       [
