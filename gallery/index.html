@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>See my skill – Emkay Dev</title>
+<meta name="theme-color" content="#05070a">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<!-- See my skill (emkay-voice/dev#2): every skill people show – public GitHub
+     repositories with the topic emkay-skill (tools/build_gallery.mjs, every
+     six hours) – to search, filter by language and sort, like the store -->
+<style>
+  :root { --bg: #05070a; --card: #141b24; --ink: #fff; --muted: #8a96a8; --line: #232c38;
+          --accent: #22a7f0; --accent-strong: #1478c8; --soft: #c7d0dc; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  code { font: 14px ui-monospace, Menlo, Consolas, monospace; background: #1b2430;
+         border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: #fff; }
+  main { max-width: 1040px; margin: 0 auto; padding: 0 22px 60px; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; gap: 12px; }
+  .top a.home { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: .1em; }
+  select, input { background: var(--card); color: var(--soft); border: 1px solid var(--line);
+                  border-radius: 20px; padding: 8px 14px; font: inherit; font-size: 15px; }
+  .top select { font-size: 14px; padding: 6px 12px; }
+  h1 { font-weight: 400; font-size: 30px; margin: 34px 0 8px; }
+  .lead { color: var(--soft); margin: 0 0 18px; }
+  .tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 16px; }
+  .tools input { flex: 1 1 260px; }
+  .count { color: var(--muted); font-size: 14px; margin-left: auto; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px;
+          display: flex; flex-direction: column; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0 0 10px; color: var(--soft); font-size: 15px; }
+  .card .small, .small { font-size: 13px; color: var(--muted); }
+  .open { display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+          padding: 8px 16px; border-radius: 99px; font-size: 14px; }
+  .card .open { color: #fff; }
+  .open:hover { background: var(--accent-strong); }
+  .open.ghost { background: #1b2430; }
+  .gal .who { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .gal .who img { width: 22px; height: 22px; border-radius: 50%; }
+  .gal .tag { display: inline-block; font-size: 12px; color: #e8c27a; border: 1px solid #6b5a33; border-radius: 99px; padding: 1px 8px; margin-left: auto; }
+  .gal .ex { color: #fff; font-style: italic; }
+  .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .empty { color: var(--muted); grid-column: 1 / -1; }
+  .how { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 22px; margin-top: 28px; }
+  footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 48px; }
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+  <a class="home" href="../" data-t="gal_back"></a>
+  <select id="lang" aria-label="Language"></select>
+</div>
+
+<h1 data-t="gal_h"></h1>
+<p class="lead" data-t="gal_lead"></p>
+
+<div class="tools">
+  <input id="q" type="search" autocomplete="off" data-t-ph="gal_search">
+  <select id="langs" aria-label="Language of the skill"></select>
+  <select id="sort" aria-label="Sort">
+    <option value="updated" data-t="gal_sort_updated"></option>
+    <option value="created" data-t="gal_sort_new"></option>
+    <option value="name" data-t="gal_sort_name"></option>
+    <option value="stars" data-t="gal_sort_stars"></option>
+  </select>
+  <span class="count" id="count"></span>
+</div>
+<div class="cards" id="cards"></div>
+
+<div class="how"><p data-t="gal_how"></p><p class="small" data-t="gal_away"></p></div>
+
+<footer><p><a href="../" data-t="gal_back"></a> · <a href="https://store.emkay.ai/" data-t="f_store"></a></p></footer>
+</main>
+
+<script src="../texts.js"></script>
+<script src="../gallery.js"></script>
+<script>
+// the page's language as on the front page (?lang=, the one picked before, the browser's)
+const LANGS = Object.keys(TEXTS);
+const params = new URLSearchParams(location.search);
+function pickLang() {
+  let saved = null;
+  try { saved = localStorage.getItem("emkay-site-lang"); } catch {}
+  for (const want of [params.get("lang"), saved, ...(navigator.languages || [navigator.language])]) {
+    if (!want) continue;
+    const w = want.toLowerCase();
+    const hit = LANGS.find((l) => l.toLowerCase() === w) || LANGS.find((l) => l.split("-")[0] === w.split("-")[0]);
+    if (hit) return hit;
+  }
+  return "en";
+}
+let lang = pickLang();
+const t = (key) => TEXTS[lang][key] ?? TEXTS.en[key];
+const $ = (id) => document.getElementById(id);
+
+// Emkay's languages, for "speaks …" (a skill's locale folders are en-us, da-dk …)
+const SPEAKS = ["en", "da", "de", "nl", "fr", "es", "it", "pt", "ca", "gl", "eu"];
+let gallery = { skills: [] };
+$("q").value = params.get("q") || "";
+$("sort").value = params.get("sort") || "updated";
+
+function langNames() {
+  const box = $("langs"), keep = box.value || params.get("speaks") || "";
+  box.replaceChildren(new Option(t("gal_all_langs"), ""));
+  let names;
+  try { names = new Intl.DisplayNames([lang], { type: "language" }); } catch {}
+  for (const l of SPEAKS) box.append(new Option(names?.of(l) || l, l));
+  box.value = keep;
+}
+
+function show() {
+  const q = $("q").value.trim().toLowerCase(), speaks = $("langs").value, sort = $("sort").value;
+  const name = (s) => (Gallery.pick(s.name, lang) || s.title).toLowerCase();
+  const by = {
+    updated: (a, b) => (b.updated || "").localeCompare(a.updated || ""),
+    created: (a, b) => (b.created || "").localeCompare(a.created || ""),
+    name: (a, b) => name(a).localeCompare(name(b), lang),
+    stars: (a, b) => (b.stars || 0) - (a.stars || 0) || (b.updated || "").localeCompare(a.updated || ""),
+  }[sort];
+  const list = gallery.skills.filter((s) => (!q || q.split(/\s+/).every((w) => Gallery.haystack(s).includes(w)))
+    && (!speaks || s.langs.some((l) => l.split("-")[0] === speaks))).sort(by);
+  const box = $("cards");
+  box.replaceChildren();
+  if (!list.length) {
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.innerHTML = gallery.skills.length ? t("gal_none") : t("gal_empty");
+    box.append(p);
+  }
+  for (const s of list) box.append(Gallery.card(s, t, lang));
+  $("count").textContent = t("gal_count").replace("{n}", list.length);
+  // the search in the address, so it can be shared
+  const u = new URL(location);
+  for (const [k, v] of [["q", q], ["speaks", speaks], ["sort", sort === "updated" ? "" : sort]]) {
+    if (v) u.searchParams.set(k, v); else u.searchParams.delete(k);
+  }
+  history.replaceState(null, "", u);
+}
+
+function render() {
+  document.documentElement.lang = lang;
+  document.title = `${t("gal_h")} – Emkay Dev`;
+  document.querySelectorAll("[data-t]").forEach((el) => { el.innerHTML = t(el.dataset.t); });
+  document.querySelectorAll("[data-t-ph]").forEach((el) => { el.placeholder = t(el.dataset.tPh); });
+  langNames();
+  show();
+}
+
+const picker = $("lang");
+for (const l of LANGS) picker.append(new Option(TEXTS[l]._name, l));
+picker.value = lang;
+picker.onchange = () => {
+  lang = picker.value;
+  try { localStorage.setItem("emkay-site-lang", lang); } catch {}
+  render();
+};
+$("q").oninput = show;
+$("langs").onchange = show;
+$("sort").onchange = show;
+render();
+Gallery.load("../").then((g) => { gallery = g; show(); });
+</script>
+</body>
+</html>

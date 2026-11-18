@@ -103,6 +103,7 @@
   .gal .ex { color: #fff; font-style: italic; }
   .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
   .gal-empty { color: var(--muted); }
+  .gal-all { margin: 16px 0 18px; }
   footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; }
 </style>
 </head>
@@ -255,6 +256,7 @@ def handle_hello(self, message):
 <h2 id="gallery" data-t="gal_h"></h2>
 <p class="lead" data-t="gal_lead"></p>
 <div class="cards" id="gallery-cards"></div>
+<p class="gal-all"><a id="gallery-all" class="open ghost" href="gallery/" hidden></a></p>
 <div class="card"><p data-t="gal_how"></p><p class="small" data-t="gal_away"></p></div>
 
 <!-- a fork, and back as a pull request: how a skill gets better -->
@@ -286,6 +288,7 @@ def handle_hello(self, message):
 </main>
 
 <script src="texts.js"></script>
+<script src="gallery.js"></script>
 <script>
 // The page's language: ?lang=, then the one picked before (shared with
 // emkay.ai), then the browser's; English for any text a language lacks.
@@ -334,50 +337,24 @@ function renderTemplates() {
   box.append(soon);
 }
 
-// See my skill (gallery/index.json, tools/build_gallery.mjs): newest first
+// See my skill (gallery/skills.json, gallery.js): the three last updated here,
+// all of them – to search and sort – on gallery/
 let gallery = null;
-fetch("gallery/index.json").then((r) => r.ok ? r.json() : null).then((g) => { gallery = g; renderGallery(); }).catch(() => {});
-const pickL = (o) => {   // skill.json is per locale (en-us, da-dk ...): the page's language, else English, else any
-  if (!o) return "";
-  const keys = Object.keys(o);
-  const k = keys.find((x) => x === lang.toLowerCase()) || keys.find((x) => x.split("-")[0] === lang.split("-")[0])
-    || keys.find((x) => x.startsWith("en")) || keys[0];
-  return k ? o[k] : "";
-};
+Gallery.load().then((g) => { gallery = g; renderGallery(); });
 function renderGallery() {
   const box = document.getElementById("gallery-cards");
   box.innerHTML = "";
-  const skills = gallery?.skills || [];
+  const skills = [...(gallery?.skills || [])].sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
   if (!skills.length) {
     const p = document.createElement("p");
     p.className = "gal-empty";
     p.innerHTML = t("gal_empty");
     box.append(p);
-    return;
   }
-  for (const s of skills) {
-    const card = document.createElement("div");
-    card.className = "card gal";
-    card.innerHTML = `<h3></h3><p class="who"><img alt="" loading="lazy"><span></span><span class="tag"></span></p>
-      <p class="about"></p><p class="ex"></p><p class="meta small"></p>
-      <div class="btns"><a class="open small" target="_blank" rel="noopener"></a><a class="open small ghost" target="_blank" rel="noopener"></a></div>`;
-    card.querySelector("h3").textContent = pickL(s.name) || s.title;
-    card.querySelector(".who img").src = s.avatar + "&s=44";
-    card.querySelector(".who span").textContent = s.owner;
-    card.querySelector(".tag").textContent = t("gal_untested");
-    card.querySelector(".about").textContent = pickL(s.description) || s.about;
-    const ex = pickL(s.examples);
-    card.querySelector(".ex").textContent = ex && ex.length ? `“${ex[0]}”` : "";
-    const when = new Date(s.updated).toLocaleDateString(lang, { year: "numeric", month: "short", day: "numeric" });
-    card.querySelector(".meta").textContent = t("gal_meta").replace("{langs}", s.langs.length).replace("{when}", when);
-    const [tryIt, code] = card.querySelectorAll(".btns a");
-    tryIt.href = `https://app.emkay.ai/?install=github:${s.repo}`;
-    tryIt.textContent = t("gal_try");
-    code.href = `https://vscode.dev/github/${s.repo}`;
-    code.textContent = t("gal_code");
-    code.title = t("gal_code_hint").replace(/<[^>]+>/g, "");
-    box.append(card);
-  }
+  for (const s of skills.slice(0, 3)) box.append(Gallery.card(s, t, lang));
+  const all = document.getElementById("gallery-all");
+  all.textContent = t("gal_see_all").replace("{n}", skills.length);
+  all.hidden = !skills.length;
 }
 
 function render() {

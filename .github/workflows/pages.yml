@@ -47,7 +47,8 @@ jobs:
       - name: The page
         run: |
           mkdir -p _site
-          cp index.html texts.js icon.svg CNAME _site/
+          cp index.html texts.js gallery.js icon.svg CNAME _site/
+          mkdir -p _site/gallery && cp gallery/index.html _site/gallery/
           cp -r img _site/
       - name: The template catalog
         run: node tools/build_templates.mjs _site/templates

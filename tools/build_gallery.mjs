@@ -6,7 +6,7 @@
 // person puts their skill there by adding the topic, and nobody else can.
 // For each: the names, descriptions and example sentences from its
 // locale/<lang>/skill.json files, its languages, its owner and when it last
-// changed. Written to <out>/index.json for the page. Forks are in: GitHub
+// changed. Written to <out>/skills.json for the pages (gallery.js). Forks are in: GitHub
 // does not copy topics to a fork, so a fork with the topic was put here by
 // its own owner (someone who made their own version).
 //
@@ -79,7 +79,7 @@ for (const r of found.slice(0, MAX)) {
       repo, url: r.html_url, owner: r.owner.login, avatar: r.owner.avatar_url,
       title: r.name, about: (r.description || "").slice(0, 300),
       name, description, examples, langs: [...langs].sort(),
-      stars: r.stargazers_count, updated: r.pushed_at, license: r.license?.spdx_id || null,
+      stars: r.stargazers_count, updated: r.pushed_at, created: r.created_at, license: r.license?.spdx_id || null,
     });
     console.log(`${repo}: ${langs.size} languages`);
   } catch (e) {
@@ -87,5 +87,5 @@ for (const r of found.slice(0, MAX)) {
   }
 }
 fs.mkdirSync(out, { recursive: true });
-fs.writeFileSync(path.join(out, "index.json"), JSON.stringify({ built: new Date().toISOString(), skills: cards }, null, 1));
+fs.writeFileSync(path.join(out, "skills.json"), JSON.stringify({ built: new Date().toISOString(), skills: cards }, null, 1));
 console.log(`gallery: ${cards.length} skills`);
