@@ -257,6 +257,10 @@ def handle_hello(self, message):
 <div class="cards" id="gallery-cards"></div>
 <div class="card"><p data-t="gal_how"></p><p class="small" data-t="gal_away"></p></div>
 
+<!-- a fork, and back as a pull request: how a skill gets better -->
+<h2 id="fork" data-t="gal_fork_h"></h2>
+<div class="card" data-t="gal_fork"></div>
+
 <!-- into the store by itself: Klondike finds it (topics), PyPI + a release
      (Looks Complete), the store's nightly test in a real Emkay -->
 <h2 id="store" data-t="next_h"></h2>
@@ -371,6 +375,7 @@ function renderGallery() {
     tryIt.textContent = t("gal_try");
     code.href = `https://vscode.dev/github/${s.repo}`;
     code.textContent = t("gal_code");
+    code.title = t("gal_code_hint").replace(/<[^>]+>/g, "");
     box.append(card);
   }
 }

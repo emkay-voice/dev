@@ -6,13 +6,14 @@
 // person puts their skill there by adding the topic, and nobody else can.
 // For each: the names, descriptions and example sentences from its
 // locale/<lang>/skill.json files, its languages, its owner and when it last
-// changed. Written to <out>/index.json for the page.
+// changed. Written to <out>/index.json for the page. Forks are in: GitHub
+// does not copy topics to a fork, so a fork with the topic was put here by
+// its own owner (someone who made their own version).
 //
 // It is rebuilt every few hours (.github/workflows/pages.yml), so what its
 // owner takes away is gone by the next build, by itself: a repository that
 // is deleted, made private or archived, or loses the topic, is simply not
-// found any more. Forks are left out (a fork is shown by its own topic, not
-// its parent's). gallery-hidden.json lists repositories kept out by hand.
+// found any more. gallery-hidden.json lists repositories kept out by hand.
 //
 // Nothing here is tested: the cards say so. Tested skills are in the store.
 import fs from "fs";
@@ -41,7 +42,7 @@ async function raw(repo, ref, file) {
 
 const found = [];
 for (let page = 1; page <= 10 && found.length < MAX; page++) {
-  const res = await api(`/search/repositories?q=${encodeURIComponent(`topic:${TOPIC} fork:false archived:false is:public`)}&sort=updated&per_page=100&page=${page}`);
+  const res = await api(`/search/repositories?q=${encodeURIComponent(`topic:${TOPIC} fork:true archived:false is:public`)}&sort=updated&per_page=100&page=${page}`);
   found.push(...res.items);
   if (res.items.length < 100) break;
 }

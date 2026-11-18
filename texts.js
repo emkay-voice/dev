@@ -97,7 +97,10 @@ TEXTS.en = {
   gal_untested: "not tested",
   gal_meta: "{langs} languages · updated {when}",
   gal_try: "Try in Emkay",
-  gal_code: "See the code / make your own",
+  gal_code: "Edit in your own copy (fork)",
+  gal_code_hint: "Opens the skill in VS Code in your browser. Change something and save: VS Code makes a <i>fork</i> – your own copy on GitHub that remembers where it came from.",
+  gal_fork_h: "Make someone's skill better",
+  gal_fork: "<ol class=\"steps\"><li><b>Edit in your own copy (fork)</b> on a skill here or in the store. Saving the first time makes your fork.</li><li>Try your change: <b>Emkay: Run the skill in Emkay</b> runs your fork in Emkay next to the code, as with your own skill.</li><li>Happy with it? Send it back as a <b>pull request</b>: on your fork's page on GitHub, <i>Contribute → Open pull request</i>. The author sees what you changed and can take it in – then everyone who uses the skill gets it.</li></ol>",
 };
 
 TEXTS.da = {
@@ -194,7 +197,10 @@ TEXTS.da = {
   gal_untested: "ikke testet",
   gal_meta: "{langs} sprog · opdateret {when}",
   gal_try: "Prøv i Emkay",
-  gal_code: "Se koden / lav din egen",
+  gal_code: "Rediger i din egen kopi (fork)",
+  gal_code_hint: "Åbner skillen i VS Code i din browser. Ret noget og gem: VS Code laver en <i>fork</i> – din egen kopi på GitHub, der husker, hvor den kom fra.",
+  gal_fork_h: "Gør en andens skill bedre",
+  gal_fork: "<ol class=\"steps\"><li><b>Rediger i din egen kopi (fork)</b> på en skill her eller i butikken. Første gang du gemmer, bliver din fork lavet.</li><li>Prøv din ændring: <b>Emkay: Kør skill'en i Emkay</b> kører din fork i Emkay ved siden af koden, som med din egen skill.</li><li>Tilfreds? Send den tilbage som en <b>pull request</b>: på din forks side på GitHub, <i>Contribute → Open pull request</i>. Forfatteren ser, hvad du har ændret, og kan tage det med – så får alle, der bruger skillen, det.</li></ol>",
 };
 
 TEXTS.de = {
@@ -282,7 +288,10 @@ TEXTS.de = {
   gal_untested: "nicht getestet",
   gal_meta: "{langs} Sprachen · aktualisiert {when}",
   gal_try: "In Emkay ausprobieren",
-  gal_code: "Code ansehen / eigene Version",
+  gal_code: "In deiner eigenen Kopie bearbeiten (Fork)",
+  gal_code_hint: "Öffnet den Skill in VS Code im Browser. Ändere etwas und speichere: VS Code macht einen <i>Fork</i> – deine eigene Kopie auf GitHub, die weiß, woher sie kommt.",
+  gal_fork_h: "Mach den Skill eines anderen besser",
+  gal_fork: "<ol class=\"steps\"><li><b>In deiner eigenen Kopie bearbeiten (Fork)</b> bei einem Skill hier oder im Store. Beim ersten Speichern entsteht dein Fork.</li><li>Probier deine Änderung aus: <b>Emkay: Den Skill in Emkay ausführen</b> lässt deinen Fork in Emkay neben dem Code laufen, wie bei deinem eigenen Skill.</li><li>Zufrieden? Schick sie als <b>Pull Request</b> zurück: auf der GitHub-Seite deines Forks, <i>Contribute → Open pull request</i>. Der Autor sieht, was du geändert hast, und kann es übernehmen – dann bekommen es alle, die den Skill nutzen.</li></ol>",
 };
 
 TEXTS.nl = {
@@ -370,7 +379,10 @@ TEXTS.nl = {
   gal_untested: "niet getest",
   gal_meta: "{langs} talen · bijgewerkt {when}",
   gal_try: "Probeer in Emkay",
-  gal_code: "Bekijk de code / maak je eigen",
+  gal_code: "Bewerk in je eigen kopie (fork)",
+  gal_code_hint: "Opent de skill in VS Code in je browser. Verander iets en sla op: VS Code maakt een <i>fork</i> – je eigen kopie op GitHub die onthoudt waar hij vandaan komt.",
+  gal_fork_h: "Maak de skill van een ander beter",
+  gal_fork: "<ol class=\"steps\"><li><b>Bewerk in je eigen kopie (fork)</b> bij een skill hier of in de winkel. De eerste keer opslaan maakt je fork.</li><li>Probeer je wijziging: <b>Emkay: De skill in Emkay uitvoeren</b> draait je fork in Emkay naast de code, net als bij je eigen skill.</li><li>Tevreden? Stuur hem terug als <b>pull request</b>: op de GitHub-pagina van je fork, <i>Contribute → Open pull request</i>. De maker ziet wat je veranderde en kan het overnemen – dan krijgt iedereen die de skill gebruikt het.</li></ol>",
 };
 
 TEXTS.fr = {
@@ -458,7 +470,10 @@ TEXTS.fr = {
   gal_untested: "non testée",
   gal_meta: "{langs} langues · mise à jour {when}",
   gal_try: "Essayer dans Emkay",
-  gal_code: "Voir le code / faire ta version",
+  gal_code: "Modifier dans ta propre copie (fork)",
+  gal_code_hint: "Ouvre la skill dans VS Code dans ton navigateur. Modifie quelque chose et enregistre : VS Code crée un <i>fork</i> – ta propre copie sur GitHub, qui se souvient d'où elle vient.",
+  gal_fork_h: "Améliorer la skill de quelqu'un d'autre",
+  gal_fork: "<ol class=\"steps\"><li><b>Modifier dans ta propre copie (fork)</b> sur une skill ici ou dans la boutique. Le premier enregistrement crée ton fork.</li><li>Essaie ta modification : <b>Emkay: Lancer la skill dans Emkay</b> lance ton fork dans Emkay à côté du code, comme pour ta propre skill.</li><li>Satisfait ? Renvoie-la sous forme de <b>pull request</b> : sur la page GitHub de ton fork, <i>Contribute → Open pull request</i>. L'auteur voit ce que tu as changé et peut l'intégrer – alors tous ceux qui utilisent la skill en profitent.</li></ol>",
 };
 
 TEXTS.es = {
@@ -546,7 +561,10 @@ TEXTS.es = {
   gal_untested: "sin probar",
   gal_meta: "{langs} idiomas · actualizada {when}",
   gal_try: "Probar en Emkay",
-  gal_code: "Ver el código / hacer la tuya",
+  gal_code: "Editar en tu propia copia (fork)",
+  gal_code_hint: "Abre la skill en VS Code en tu navegador. Cambia algo y guarda: VS Code crea un <i>fork</i>, tu propia copia en GitHub que recuerda de dónde viene.",
+  gal_fork_h: "Mejora la skill de otra persona",
+  gal_fork: "<ol class=\"steps\"><li><b>Editar en tu propia copia (fork)</b> en una skill de aquí o de la tienda. Al guardar por primera vez se crea tu fork.</li><li>Prueba tu cambio: <b>Emkay: Ejecutar la skill en Emkay</b> ejecuta tu fork en Emkay junto al código, como con tu propia skill.</li><li>¿Te gusta? Envíalo de vuelta como <b>pull request</b>: en la página de tu fork en GitHub, <i>Contribute → Open pull request</i>. El autor ve lo que cambiaste y puede incorporarlo; así lo recibe todo el que usa la skill.</li></ol>",
 };
 
 TEXTS.it = {
@@ -634,7 +652,10 @@ TEXTS.it = {
   gal_untested: "non testata",
   gal_meta: "{langs} lingue · aggiornata {when}",
   gal_try: "Prova in Emkay",
-  gal_code: "Vedi il codice / fai la tua",
+  gal_code: "Modifica nella tua copia (fork)",
+  gal_code_hint: "Apre la skill in VS Code nel browser. Cambia qualcosa e salva: VS Code crea un <i>fork</i> – la tua copia su GitHub, che ricorda da dove viene.",
+  gal_fork_h: "Migliora la skill di qualcun altro",
+  gal_fork: "<ol class=\"steps\"><li><b>Modifica nella tua copia (fork)</b> su una skill qui o nello store. Il primo salvataggio crea il tuo fork.</li><li>Prova la modifica: <b>Emkay: Esegui la skill in Emkay</b> esegue il tuo fork in Emkay accanto al codice, come con la tua skill.</li><li>Ti piace? Rimandala come <b>pull request</b>: sulla pagina GitHub del tuo fork, <i>Contribute → Open pull request</i>. L'autore vede cosa hai cambiato e può accettarlo – così lo ricevono tutti quelli che usano la skill.</li></ol>",
 };
 
 TEXTS["pt-BR"] = {
@@ -722,7 +743,10 @@ TEXTS["pt-BR"] = {
   gal_untested: "não testada",
   gal_meta: "{langs} idiomas · atualizada {when}",
   gal_try: "Experimentar no Emkay",
-  gal_code: "Ver o código / fazer a sua",
+  gal_code: "Editar na sua própria cópia (fork)",
+  gal_code_hint: "Abre a skill no VS Code no seu navegador. Mude algo e salve: o VS Code cria um <i>fork</i> – sua própria cópia no GitHub, que lembra de onde veio.",
+  gal_fork_h: "Melhore a skill de outra pessoa",
+  gal_fork: "<ol class=\"steps\"><li><b>Editar na sua própria cópia (fork)</b> numa skill daqui ou da loja. Ao salvar pela primeira vez, seu fork é criado.</li><li>Teste sua mudança: <b>Emkay: Rodar a skill no Emkay</b> roda seu fork no Emkay ao lado do código, como com a sua própria skill.</li><li>Gostou? Envie de volta como <b>pull request</b>: na página do seu fork no GitHub, <i>Contribute → Open pull request</i>. O autor vê o que você mudou e pode incorporar – e todos que usam a skill recebem.</li></ol>",
 };
 
 TEXTS["pt-PT"] = {
@@ -810,7 +834,10 @@ TEXTS["pt-PT"] = {
   gal_untested: "não testada",
   gal_meta: "{langs} línguas · atualizada {when}",
   gal_try: "Experimentar no Emkay",
-  gal_code: "Ver o código / fazer a tua",
+  gal_code: "Editar na tua própria cópia (fork)",
+  gal_code_hint: "Abre a skill no VS Code no teu navegador. Muda algo e guarda: o VS Code cria um <i>fork</i> – a tua própria cópia no GitHub, que se lembra de onde veio.",
+  gal_fork_h: "Melhora a skill de outra pessoa",
+  gal_fork: "<ol class=\"steps\"><li><b>Editar na tua própria cópia (fork)</b> numa skill daqui ou da loja. Ao guardar pela primeira vez, o teu fork é criado.</li><li>Experimenta a alteração: <b>Emkay: Correr a skill no Emkay</b> corre o teu fork no Emkay ao lado do código, como com a tua própria skill.</li><li>Gostaste? Envia-a de volta como <b>pull request</b>: na página do teu fork no GitHub, <i>Contribute → Open pull request</i>. O autor vê o que mudaste e pode integrá-lo – e todos os que usam a skill o recebem.</li></ol>",
 };
 
 TEXTS.ca = {
@@ -898,7 +925,10 @@ TEXTS.ca = {
   gal_untested: "sense provar",
   gal_meta: "{langs} idiomes · actualitzada {when}",
   gal_try: "Prova-la a Emkay",
-  gal_code: "Mira el codi / fes la teva",
+  gal_code: "Edita a la teva còpia (fork)",
+  gal_code_hint: "Obre la skill al VS Code al navegador. Canvia alguna cosa i desa: el VS Code fa un <i>fork</i>, la teva còpia a GitHub que recorda d'on ve.",
+  gal_fork_h: "Millora la skill d'una altra persona",
+  gal_fork: "<ol class=\"steps\"><li><b>Edita a la teva còpia (fork)</b> en una skill d'aquí o de la botiga. El primer cop que deses es crea el teu fork.</li><li>Prova el canvi: <b>Emkay: Executa la skill a l'Emkay</b> executa el teu fork a l'Emkay al costat del codi, com amb la teva skill.</li><li>T'agrada? Envia-la de tornada com a <b>pull request</b>: a la pàgina del teu fork a GitHub, <i>Contribute → Open pull request</i>. L'autor veu què has canviat i ho pot incorporar; així ho rep tothom qui fa servir la skill.</li></ol>",
 };
 
 TEXTS.gl = {
@@ -986,7 +1016,10 @@ TEXTS.gl = {
   gal_untested: "sen probar",
   gal_meta: "{langs} idiomas · actualizada {when}",
   gal_try: "Probar en Emkay",
-  gal_code: "Ver o código / facer a túa",
+  gal_code: "Editar na túa propia copia (fork)",
+  gal_code_hint: "Abre a skill no VS Code no navegador. Cambia algo e garda: o VS Code fai un <i>fork</i>, a túa copia en GitHub que lembra de onde vén.",
+  gal_fork_h: "Mellora a skill doutra persoa",
+  gal_fork: "<ol class=\"steps\"><li><b>Editar na túa propia copia (fork)</b> nunha skill de aquí ou da tenda. A primeira vez que gardas créase o teu fork.</li><li>Proba o cambio: <b>Emkay: Executar a skill no Emkay</b> executa o teu fork no Emkay xunto ao código, como coa túa propia skill.</li><li>Gústache? Envíao de volta como <b>pull request</b>: na páxina do teu fork en GitHub, <i>Contribute → Open pull request</i>. O autor ve o que cambiaches e pode incorporalo; así recíbeo todo o que usa a skill.</li></ol>",
 };
 
 TEXTS.eu = {
@@ -1074,7 +1107,10 @@ TEXTS.eu = {
   gal_untested: "probatu gabe",
   gal_meta: "{langs} hizkuntza · eguneratua {when}",
   gal_try: "Probatu Emkayn",
-  gal_code: "Ikusi kodea / egin zurea",
+  gal_code: "Editatu zure kopian (fork)",
+  gal_code_hint: "Skill-a VS Code-n irekitzen du zure nabigatzailean. Aldatu zerbait eta gorde: VS Code-k <i>fork</i> bat egiten du – zure kopia GitHub-en, nondik datorren gogoratzen duena.",
+  gal_fork_h: "Hobetu beste norbaiten skill-a",
+  gal_fork: "<ol class=\"steps\"><li><b>Editatu zure kopian (fork)</b> hemengo edo dendako skill batean. Lehen aldiz gordetzean zure fork-a sortzen da.</li><li>Probatu aldaketa: <b>Emkay: Exekutatu skilla Emkayn</b>-ek zure fork-a Emkayn exekutatzen du kodearen ondoan, zure skill-arekin bezala.</li><li>Gustatu zaizu? Bidali itzuli <b>pull request</b> gisa: zure fork-aren GitHub orrian, <i>Contribute → Open pull request</i>. Egileak zer aldatu duzun ikusten du eta onar dezake – orduan skill-a erabiltzen duen guztiak jasotzen du.</li></ol>",
 };
 
 // The template skill's own sentences (emkay-voice/skill-template, locale/<lang>/),
