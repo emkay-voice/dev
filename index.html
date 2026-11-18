@@ -96,6 +96,13 @@
   .file p { margin: 0; padding: 0 12px 12px; color: var(--muted); font-size: 14px; }
   .tpl .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
   .tpl.soon { border-style: dashed; }
+  /* See my skill: the gallery (tools/build_gallery.mjs) */
+  .gal .who { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .gal .who img { width: 22px; height: 22px; border-radius: 50%; }
+  .gal .tag { display: inline-block; font-size: 12px; color: #e8c27a; border: 1px solid #6b5a33; border-radius: 99px; padding: 1px 8px; margin-left: auto; }
+  .gal .ex { color: #fff; font-style: italic; }
+  .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .gal-empty { color: var(--muted); }
   footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; }
 </style>
 </head>
@@ -243,6 +250,13 @@ def handle_hello(self, message):
   <p class="small" data-t="phone_note"></p>
 </div>
 
+<!-- See my skill (dev#2): skills people show, found by the topic emkay-skill
+     (tools/build_gallery.mjs, rebuilt every few hours) – not tested, not a store -->
+<h2 id="gallery" data-t="gal_h"></h2>
+<p class="lead" data-t="gal_lead"></p>
+<div class="cards" id="gallery-cards"></div>
+<div class="card"><p data-t="gal_how"></p><p class="small" data-t="gal_away"></p></div>
+
 <!-- into the store by itself: Klondike finds it (topics), PyPI + a release
      (Looks Complete), the store's nightly test in a real Emkay -->
 <h2 id="store" data-t="next_h"></h2>
@@ -316,6 +330,51 @@ function renderTemplates() {
   box.append(soon);
 }
 
+// See my skill (gallery/index.json, tools/build_gallery.mjs): newest first
+let gallery = null;
+fetch("gallery/index.json").then((r) => r.ok ? r.json() : null).then((g) => { gallery = g; renderGallery(); }).catch(() => {});
+const pickL = (o) => {   // skill.json is per locale (en-us, da-dk ...): the page's language, else English, else any
+  if (!o) return "";
+  const keys = Object.keys(o);
+  const k = keys.find((x) => x === lang.toLowerCase()) || keys.find((x) => x.split("-")[0] === lang.split("-")[0])
+    || keys.find((x) => x.startsWith("en")) || keys[0];
+  return k ? o[k] : "";
+};
+function renderGallery() {
+  const box = document.getElementById("gallery-cards");
+  box.innerHTML = "";
+  const skills = gallery?.skills || [];
+  if (!skills.length) {
+    const p = document.createElement("p");
+    p.className = "gal-empty";
+    p.innerHTML = t("gal_empty");
+    box.append(p);
+    return;
+  }
+  for (const s of skills) {
+    const card = document.createElement("div");
+    card.className = "card gal";
+    card.innerHTML = `<h3></h3><p class="who"><img alt="" loading="lazy"><span></span><span class="tag"></span></p>
+      <p class="about"></p><p class="ex"></p><p class="meta small"></p>
+      <div class="btns"><a class="open small" target="_blank" rel="noopener"></a><a class="open small ghost" target="_blank" rel="noopener"></a></div>`;
+    card.querySelector("h3").textContent = pickL(s.name) || s.title;
+    card.querySelector(".who img").src = s.avatar + "&s=44";
+    card.querySelector(".who span").textContent = s.owner;
+    card.querySelector(".tag").textContent = t("gal_untested");
+    card.querySelector(".about").textContent = pickL(s.description) || s.about;
+    const ex = pickL(s.examples);
+    card.querySelector(".ex").textContent = ex && ex.length ? `“${ex[0]}”` : "";
+    const when = new Date(s.updated).toLocaleDateString(lang, { year: "numeric", month: "short", day: "numeric" });
+    card.querySelector(".meta").textContent = t("gal_meta").replace("{langs}", s.langs.length).replace("{when}", when);
+    const [tryIt, code] = card.querySelectorAll(".btns a");
+    tryIt.href = `https://app.emkay.ai/?install=github:${s.repo}`;
+    tryIt.textContent = t("gal_try");
+    code.href = `https://vscode.dev/github/${s.repo}`;
+    code.textContent = t("gal_code");
+    box.append(card);
+  }
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.title = t("title");
@@ -326,6 +385,7 @@ function render() {
   // the What's happening? screenshot: Danish for Danish, else English
   document.getElementById("watch-shot").src = lang === "da" ? "img/activity-da.png" : "img/activity-en.png";
   renderTemplates();
+  renderGallery();
 }
 
 // a <code class="copy"> copies itself when clicked (the extension's address)

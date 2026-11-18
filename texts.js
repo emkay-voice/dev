@@ -88,6 +88,16 @@ TEXTS.en = {
   f_template: "Skill template",
   f_store: "Skill store",
   f_note: "Emkay is built on OpenVoiceOS. Free and open source (Apache 2.0).",
+
+  gal_h: "See my skill – what others made",
+  gal_lead: "Skills people have made and want to show – ready or not. Try one in your Emkay, or open its code and make your own version.",
+  gal_how: "<b>Show yours:</b> put it on GitHub (public) and add the topic <code>emkay-skill</code> to the repository (the ⚙ next to <i>About</i> on its page). It shows up here within a few hours.",
+  gal_away: "<b>Take it away:</b> remove the topic, or make the repository private, archive it or delete it – it is gone from here at the next build, within a few hours. Copies people installed keep working on their device until they remove them. Something here that should not be? Tell us on <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Nobody has shown a skill yet – be the first: add the topic <code>emkay-skill</code> to your skill's repository.",
+  gal_untested: "not tested",
+  gal_meta: "{langs} languages · updated {when}",
+  gal_try: "Try in Emkay",
+  gal_code: "See the code / make your own",
 };
 
 TEXTS.da = {
@@ -175,6 +185,16 @@ TEXTS.da = {
   f_template: "Skill-skabelon",
   f_store: "Skill-store",
   f_note: "Emkay er bygget på OpenVoiceOS. Gratis og open source (Apache 2.0).",
+
+  gal_h: "Se min skill – hvad andre har lavet",
+  gal_lead: "Skills som folk har lavet og vil vise frem – færdige eller ej. Prøv en i din Emkay, eller åbn koden og lav din egen version.",
+  gal_how: "<b>Vis din egen:</b> læg den på GitHub (offentligt) og giv repositoriet emnet (topic) <code>emkay-skill</code> (⚙ ved <i>About</i> på dets side). Den dukker op her inden for nogle timer.",
+  gal_away: "<b>Fjern den igen:</b> fjern emnet, eller gør repositoriet privat, arkivér eller slet det – så er den væk herfra ved næste opdatering, inden for nogle timer. Kopier som folk har installeret, virker videre på deres enhed, til de fjerner dem. Er der noget her, som ikke burde være her? Sig det på <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Ingen har vist en skill endnu – vær den første: giv din skills repositorium emnet <code>emkay-skill</code>.",
+  gal_untested: "ikke testet",
+  gal_meta: "{langs} sprog · opdateret {when}",
+  gal_try: "Prøv i Emkay",
+  gal_code: "Se koden / lav din egen",
 };
 
 TEXTS.de = {
@@ -253,6 +273,16 @@ TEXTS.de = {
   f_template: "Skill-Vorlage",
   f_store: "Skill-Store",
   f_note: "Emkay baut auf OpenVoiceOS auf. Kostenlos und Open Source (Apache 2.0).",
+
+  gal_h: "Sieh dir meinen Skill an – was andere gemacht haben",
+  gal_lead: "Skills, die Leute gemacht haben und zeigen wollen – fertig oder nicht. Probier einen in deinem Emkay aus, oder öffne den Code und mach deine eigene Version.",
+  gal_how: "<b>Zeig deinen:</b> leg ihn öffentlich auf GitHub und gib dem Repository das Thema (Topic) <code>emkay-skill</code> (das ⚙ neben <i>About</i> auf seiner Seite). In ein paar Stunden erscheint er hier.",
+  gal_away: "<b>Wieder wegnehmen:</b> entferne das Thema, oder mach das Repository privat, archiviere oder lösche es – beim nächsten Aufbau, in ein paar Stunden, ist er hier weg. Installierte Kopien laufen auf den Geräten weiter, bis man sie entfernt. Etwas, das nicht hierher gehört? Sag es uns auf <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Noch hat niemand einen Skill gezeigt – sei der Erste: gib dem Repository deines Skills das Thema <code>emkay-skill</code>.",
+  gal_untested: "nicht getestet",
+  gal_meta: "{langs} Sprachen · aktualisiert {when}",
+  gal_try: "In Emkay ausprobieren",
+  gal_code: "Code ansehen / eigene Version",
 };
 
 TEXTS.nl = {
@@ -331,6 +361,16 @@ TEXTS.nl = {
   f_template: "Skill-sjabloon",
   f_store: "Skillstore",
   f_note: "Emkay is gebouwd op OpenVoiceOS. Gratis en open source (Apache 2.0).",
+
+  gal_h: "Bekijk mijn skill – wat anderen maakten",
+  gal_lead: "Skills die mensen hebben gemaakt en willen laten zien – klaar of niet. Probeer er een in je Emkay, of open de code en maak je eigen versie.",
+  gal_how: "<b>Laat de jouwe zien:</b> zet hem openbaar op GitHub en geef de repository het onderwerp (topic) <code>emkay-skill</code> (het ⚙ naast <i>About</i> op de pagina). Binnen een paar uur staat hij hier.",
+  gal_away: "<b>Weer weghalen:</b> haal het onderwerp weg, of maak de repository privé, archiveer of verwijder hem – bij de volgende bouw, binnen een paar uur, is hij hier weg. Geïnstalleerde kopieën blijven werken op het apparaat tot ze worden verwijderd. Staat hier iets dat er niet hoort? Zeg het op <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Nog niemand heeft een skill laten zien – wees de eerste: geef de repository van je skill het onderwerp <code>emkay-skill</code>.",
+  gal_untested: "niet getest",
+  gal_meta: "{langs} talen · bijgewerkt {when}",
+  gal_try: "Probeer in Emkay",
+  gal_code: "Bekijk de code / maak je eigen",
 };
 
 TEXTS.fr = {
@@ -409,6 +449,16 @@ TEXTS.fr = {
   f_template: "Modèle de skill",
   f_store: "Boutique de skills",
   f_note: "Emkay est construit sur OpenVoiceOS. Gratuit et open source (Apache 2.0).",
+
+  gal_h: "Regarde ma skill – ce que d'autres ont fait",
+  gal_lead: "Des skills que des gens ont faites et veulent montrer – finies ou pas. Essaie-en une dans ton Emkay, ou ouvre son code et fais ta propre version.",
+  gal_how: "<b>Montre la tienne :</b> mets-la sur GitHub (en public) et ajoute le sujet (topic) <code>emkay-skill</code> au dépôt (le ⚙ à côté de <i>About</i> sur sa page). Elle apparaît ici en quelques heures.",
+  gal_away: "<b>La retirer :</b> enlève le sujet, ou rends le dépôt privé, archive-le ou supprime-le – elle disparaît d'ici à la prochaine mise à jour, en quelques heures. Les copies installées continuent de marcher sur les appareils jusqu'à ce qu'on les retire. Quelque chose ici qui ne devrait pas y être ? Dis-le-nous sur <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Personne n'a encore montré de skill – sois le premier : ajoute le sujet <code>emkay-skill</code> au dépôt de ta skill.",
+  gal_untested: "non testée",
+  gal_meta: "{langs} langues · mise à jour {when}",
+  gal_try: "Essayer dans Emkay",
+  gal_code: "Voir le code / faire ta version",
 };
 
 TEXTS.es = {
@@ -487,6 +537,16 @@ TEXTS.es = {
   f_template: "Plantilla de skill",
   f_store: "Tienda de skills",
   f_note: "Emkay está hecho sobre OpenVoiceOS. Gratis y de código abierto (Apache 2.0).",
+
+  gal_h: "Mira mi skill – lo que han hecho otros",
+  gal_lead: "Skills que la gente ha hecho y quiere enseñar – terminadas o no. Prueba una en tu Emkay, o abre su código y haz tu propia versión.",
+  gal_how: "<b>Enseña la tuya:</b> súbela a GitHub (pública) y añade el tema (topic) <code>emkay-skill</code> al repositorio (el ⚙ junto a <i>About</i> en su página). Aparece aquí en unas horas.",
+  gal_away: "<b>Quitarla:</b> quita el tema, o haz el repositorio privado, archívalo o bórralo – desaparece de aquí en la siguiente actualización, en unas horas. Las copias instaladas siguen funcionando en cada dispositivo hasta que se quiten. ¿Hay algo aquí que no debería estar? Dínoslo en <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Nadie ha enseñado una skill todavía – sé el primero: añade el tema <code>emkay-skill</code> al repositorio de tu skill.",
+  gal_untested: "sin probar",
+  gal_meta: "{langs} idiomas · actualizada {when}",
+  gal_try: "Probar en Emkay",
+  gal_code: "Ver el código / hacer la tuya",
 };
 
 TEXTS.it = {
@@ -565,6 +625,16 @@ TEXTS.it = {
   f_template: "Modello di skill",
   f_store: "Store delle skill",
   f_note: "Emkay è costruito su OpenVoiceOS. Gratuito e open source (Apache 2.0).",
+
+  gal_h: "Guarda la mia skill – cosa hanno fatto gli altri",
+  gal_lead: "Skill che le persone hanno fatto e vogliono mostrare – finite o no. Provane una nel tuo Emkay, o apri il codice e fai la tua versione.",
+  gal_how: "<b>Mostra la tua:</b> mettila su GitHub (pubblica) e aggiungi l'argomento (topic) <code>emkay-skill</code> al repository (il ⚙ accanto ad <i>About</i> nella sua pagina). Compare qui entro qualche ora.",
+  gal_away: "<b>Toglierla:</b> togli l'argomento, oppure rendi il repository privato, archivialo o cancellalo – sparisce da qui al prossimo aggiornamento, entro qualche ora. Le copie installate continuano a funzionare sui dispositivi finché non vengono rimosse. C'è qualcosa che non dovrebbe esserci? Diccelo su <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Nessuno ha ancora mostrato una skill – sii il primo: aggiungi l'argomento <code>emkay-skill</code> al repository della tua skill.",
+  gal_untested: "non testata",
+  gal_meta: "{langs} lingue · aggiornata {when}",
+  gal_try: "Prova in Emkay",
+  gal_code: "Vedi il codice / fai la tua",
 };
 
 TEXTS["pt-BR"] = {
@@ -643,6 +713,16 @@ TEXTS["pt-BR"] = {
   f_template: "Modelo de skill",
   f_store: "Loja de skills",
   f_note: "O Emkay é feito sobre o OpenVoiceOS. Grátis e de código aberto (Apache 2.0).",
+
+  gal_h: "Veja minha skill – o que outros fizeram",
+  gal_lead: "Skills que as pessoas fizeram e querem mostrar – prontas ou não. Experimente uma no seu Emkay, ou abra o código e faça a sua versão.",
+  gal_how: "<b>Mostre a sua:</b> coloque no GitHub (público) e adicione o tópico <code>emkay-skill</code> ao repositório (o ⚙ ao lado de <i>About</i> na página dele). Ela aparece aqui em algumas horas.",
+  gal_away: "<b>Tirar daqui:</b> remova o tópico, ou deixe o repositório privado, arquive ou apague – ela some daqui na próxima atualização, em algumas horas. Cópias instaladas continuam funcionando nos dispositivos até serem removidas. Tem algo aqui que não deveria estar? Diga no <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Ninguém mostrou uma skill ainda – seja o primeiro: adicione o tópico <code>emkay-skill</code> ao repositório da sua skill.",
+  gal_untested: "não testada",
+  gal_meta: "{langs} idiomas · atualizada {when}",
+  gal_try: "Experimentar no Emkay",
+  gal_code: "Ver o código / fazer a sua",
 };
 
 TEXTS["pt-PT"] = {
@@ -721,6 +801,16 @@ TEXTS["pt-PT"] = {
   f_template: "Modelo de skill",
   f_store: "Loja de skills",
   f_note: "O Emkay é construído sobre o OpenVoiceOS. Gratuito e de código aberto (Apache 2.0).",
+
+  gal_h: "Vê a minha skill – o que outros fizeram",
+  gal_lead: "Skills que as pessoas fizeram e querem mostrar – prontas ou não. Experimenta uma no teu Emkay, ou abre o código e faz a tua versão.",
+  gal_how: "<b>Mostra a tua:</b> põe-na no GitHub (pública) e adiciona o tópico <code>emkay-skill</code> ao repositório (o ⚙ ao lado de <i>About</i> na página). Aparece aqui dentro de algumas horas.",
+  gal_away: "<b>Tirá-la daqui:</b> remove o tópico, ou torna o repositório privado, arquiva-o ou apaga-o – desaparece daqui na próxima atualização, dentro de algumas horas. As cópias instaladas continuam a funcionar nos dispositivos até serem removidas. Há aqui algo que não devia estar? Diz-nos no <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Ninguém mostrou ainda uma skill – sê o primeiro: adiciona o tópico <code>emkay-skill</code> ao repositório da tua skill.",
+  gal_untested: "não testada",
+  gal_meta: "{langs} línguas · atualizada {when}",
+  gal_try: "Experimentar no Emkay",
+  gal_code: "Ver o código / fazer a tua",
 };
 
 TEXTS.ca = {
@@ -799,6 +889,16 @@ TEXTS.ca = {
   f_template: "Plantilla de skill",
   f_store: "Botiga de skills",
   f_note: "L'Emkay està fet sobre OpenVoiceOS. Gratuït i de codi obert (Apache 2.0).",
+
+  gal_h: "Mira la meva skill – el que han fet altres",
+  gal_lead: "Skills que la gent ha fet i vol ensenyar – acabades o no. Prova'n una al teu Emkay, o obre'n el codi i fes-ne la teva versió.",
+  gal_how: "<b>Ensenya la teva:</b> posa-la a GitHub (pública) i afegeix el tema (topic) <code>emkay-skill</code> al repositori (el ⚙ al costat d'<i>About</i> a la seva pàgina). Apareix aquí en unes hores.",
+  gal_away: "<b>Treure-la:</b> treu el tema, o fes el repositori privat, arxiva'l o esborra'l – desapareix d'aquí a la propera actualització, en unes hores. Les còpies instal·lades continuen funcionant als dispositius fins que es treguin. Hi ha alguna cosa que no hi hauria de ser? Digues-nos-ho a <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Encara ningú no ha ensenyat cap skill – sigues el primer: afegeix el tema <code>emkay-skill</code> al repositori de la teva skill.",
+  gal_untested: "sense provar",
+  gal_meta: "{langs} idiomes · actualitzada {when}",
+  gal_try: "Prova-la a Emkay",
+  gal_code: "Mira el codi / fes la teva",
 };
 
 TEXTS.gl = {
@@ -877,6 +977,16 @@ TEXTS.gl = {
   f_template: "Modelo de skill",
   f_store: "Tenda de skills",
   f_note: "O Emkay está feito sobre OpenVoiceOS. De balde e de código aberto (Apache 2.0).",
+
+  gal_h: "Mira a miña skill – o que fixeron outros",
+  gal_lead: "Skills que a xente fixo e quere amosar – rematadas ou non. Proba unha no teu Emkay, ou abre o seu código e fai a túa versión.",
+  gal_how: "<b>Amosa a túa:</b> ponla en GitHub (pública) e engade o tema (topic) <code>emkay-skill</code> ao repositorio (o ⚙ xunto a <i>About</i> na súa páxina). Aparece aquí nunhas horas.",
+  gal_away: "<b>Quitala:</b> quita o tema, ou fai o repositorio privado, arquívao ou bórrao – desaparece de aquí na seguinte actualización, nunhas horas. As copias instaladas seguen funcionando nos dispositivos ata que se quiten. Hai algo aquí que non debería estar? Dinolo en <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>.",
+  gal_empty: "Aínda ninguén amosou unha skill – sé o primeiro: engade o tema <code>emkay-skill</code> ao repositorio da túa skill.",
+  gal_untested: "sen probar",
+  gal_meta: "{langs} idiomas · actualizada {when}",
+  gal_try: "Probar en Emkay",
+  gal_code: "Ver o código / facer a túa",
 };
 
 TEXTS.eu = {
@@ -955,6 +1065,16 @@ TEXTS.eu = {
   f_template: "Skill-txantiloia",
   f_store: "Skill-denda",
   f_note: "Emkay OpenVoiceOS-en gainean eraikita dago. Doakoa eta kode irekikoa (Apache 2.0).",
+
+  gal_h: "Ikusi nire skill-a – besteek egin dutena",
+  gal_lead: "Jendeak egin eta erakutsi nahi dituen skill-ak – amaituta edo ez. Probatu bat zure Emkayn, edo ireki kodea eta egin zure bertsioa.",
+  gal_how: "<b>Erakutsi zurea:</b> jarri GitHub-en (publikoa) eta gehitu <code>emkay-skill</code> gaia (topic) biltegiari (bere orriko <i>About</i> ondoko ⚙). Ordu gutxi barru agertzen da hemen.",
+  gal_away: "<b>Kendu:</b> kendu gaia, edo egin biltegia pribatu, artxibatu edo ezabatu – hurrengo eguneraketan desagertzen da hemendik, ordu gutxi barru. Instalatutako kopiek gailuetan funtzionatzen jarraitzen dute kendu arte. Hemen egon behar ez duen zerbait? Esan iezaguzu <a href=\"https://matrix.to/#/#openvoiceos-general:matrix.org\">Matrix</a>-en.",
+  gal_empty: "Oraindik inork ez du skill-ik erakutsi – izan lehena: gehitu <code>emkay-skill</code> gaia zure skill-aren biltegiari.",
+  gal_untested: "probatu gabe",
+  gal_meta: "{langs} hizkuntza · eguneratua {when}",
+  gal_try: "Probatu Emkayn",
+  gal_code: "Ikusi kodea / egin zurea",
 };
 
 // The template skill's own sentences (emkay-voice/skill-template, locale/<lang>/),
