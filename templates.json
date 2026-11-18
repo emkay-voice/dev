@@ -128,6 +128,134 @@
     ]
   },
   {
+    "id": "web",
+    "kind": "skill",
+    "icon": "🌍",
+    "repo": "emkay-voice/template-web",
+    "ref": "main",
+    "name": {
+      "en": "Ask the web",
+      "da": "Spørg nettet",
+      "de": "Frag das Netz",
+      "nl": "Vraag het web",
+      "fr": "Interroger le web",
+      "es": "Pregunta a la web",
+      "it": "Chiedi al web",
+      "pt-BR": "Pergunte à web",
+      "pt-PT": "Pergunta à web",
+      "ca": "Pregunta a la web",
+      "gl": "Pregúntalle á web",
+      "eu": "Galdetu sareari"
+    },
+    "description": {
+      "en": "Asks a free web service (Open-Meteo) about the air and the sun where you are – requests, location, and what to say when the network fails.",
+      "da": "Spørger en gratis webtjeneste (Open-Meteo) om luften og solen der, hvor du er – requests, placering, og hvad den siger, når nettet svigter.",
+      "de": "Fragt einen kostenlosen Webdienst (Open-Meteo) nach Luft und Sonne an deinem Ort – requests, Standort und was er sagt, wenn das Netz ausfällt.",
+      "nl": "Vraagt een gratis webdienst (Open-Meteo) naar de lucht en de zon waar je bent – requests, locatie, en wat hij zegt als het netwerk faalt.",
+      "fr": "Interroge un service web gratuit (Open-Meteo) sur l'air et le soleil là où tu es – requests, lieu, et quoi dire si le réseau tombe.",
+      "es": "Pregunta a un servicio web gratuito (Open-Meteo) por el aire y el sol donde estás – requests, ubicación y qué decir si falla la red.",
+      "it": "Chiede a un servizio web gratuito (Open-Meteo) dell'aria e del sole dove sei – requests, posizione e cosa dire se la rete non va.",
+      "pt-BR": "Pergunta a um serviço web gratuito (Open-Meteo) sobre o ar e o sol onde você está – requests, localização e o que dizer se a rede falhar.",
+      "pt-PT": "Pergunta a um serviço web gratuito (Open-Meteo) sobre o ar e o sol onde estás – requests, localização e o que dizer se a rede falhar.",
+      "ca": "Pregunta a un servei web gratuït (Open-Meteo) per l'aire i el sol on ets – requests, ubicació i què dir si falla la xarxa.",
+      "gl": "Pregúntalle a un servizo web gratuíto (Open-Meteo) polo aire e o sol onde estás – requests, localización e que dicir se falla a rede.",
+      "eu": "Doako web zerbitzu bati (Open-Meteo) galdetzen dio zauden lekuko aireaz eta eguzkiaz – requests, kokapena, eta sareak huts egiten duenean zer esan."
+    },
+    "replace": [
+      [
+        "ovos-skill-air-quality.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_air_quality",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-air-quality",
+        "{{name}}"
+      ],
+      [
+        "AirQualitySkill",
+        "{{Class}}"
+      ],
+      [
+        "emkay-voice/template-web",
+        "{{repo}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
+    "id": "screen",
+    "kind": "skill",
+    "icon": "🖼️",
+    "repo": "emkay-voice/template-screen",
+    "ref": "main",
+    "name": {
+      "en": "Pictures on the screen",
+      "da": "Billeder på skærmen",
+      "de": "Bilder auf dem Bildschirm",
+      "nl": "Foto's op het scherm",
+      "fr": "Des images à l'écran",
+      "es": "Imágenes en pantalla",
+      "it": "Immagini sullo schermo",
+      "pt-BR": "Imagens na tela",
+      "pt-PT": "Imagens no ecrã",
+      "ca": "Imatges a la pantalla",
+      "gl": "Imaxes na pantalla",
+      "eu": "Irudiak pantailan"
+    },
+    "description": {
+      "en": "“Show me a dog” – shows a picture from a free web service on the device's screen (self.gui.show_image).",
+      "da": "“Vis mig en hund” – viser et billede fra en gratis webtjeneste på enhedens skærm (self.gui.show_image).",
+      "de": "„Zeig mir einen Hund“ – zeigt ein Bild von einem kostenlosen Webdienst auf dem Bildschirm des Geräts (self.gui.show_image).",
+      "nl": "“Laat me een hond zien” – toont een foto van een gratis webdienst op het scherm van het apparaat (self.gui.show_image).",
+      "fr": "« Montre-moi un chien » – affiche une photo d'un service web gratuit sur l'écran de l'appareil (self.gui.show_image).",
+      "es": "«Enséñame un perro»: muestra una foto de un servicio web gratuito en la pantalla del dispositivo (self.gui.show_image).",
+      "it": "«Fammi vedere un cane» – mostra una foto da un servizio web gratuito sullo schermo del dispositivo (self.gui.show_image).",
+      "pt-BR": "“Me mostre um cachorro” – mostra uma foto de um serviço web gratuito na tela do dispositivo (self.gui.show_image).",
+      "pt-PT": "“Mostra-me um cão” – mostra uma fotografia de um serviço web gratuito no ecrã do dispositivo (self.gui.show_image).",
+      "ca": "«Ensenya'm un gos»: mostra una foto d'un servei web gratuït a la pantalla del dispositiu (self.gui.show_image).",
+      "gl": "«Amósame un can»: amosa unha foto dun servizo web gratuíto na pantalla do dispositivo (self.gui.show_image).",
+      "eu": "«Erakutsi txakur bat»: doako web zerbitzu bateko argazki bat erakusten du gailuaren pantailan (self.gui.show_image)."
+    },
+    "replace": [
+      [
+        "ovos-skill-pictures.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_pictures",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-pictures",
+        "{{name}}"
+      ],
+      [
+        "PicturesSkill",
+        "{{Class}}"
+      ],
+      [
+        "emkay-voice/template-screen",
+        "{{repo}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
     "id": "common-reading",
     "kind": "reading",
     "icon": "📖",
