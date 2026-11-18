@@ -2,7 +2,7 @@
 
     python3 tools/templates/make.py <id> <out dir> [<skill-template checkout>]
 
-A template is a repository like emkay-voice/skill-template: a skill in all
+A template is a repository like emkay-voice/ovos-skill-hello-example: a skill in all
 twelve of Emkay's languages, its golden utterances, pytest checks, the
 Codespaces/Dev Container workshop, "Make it yours" and "Publish to PyPI".
 What they share comes from skill-template itself (its .devcontainer, .vscode,
@@ -176,8 +176,9 @@ def make(tid, out, base):
     s = load_spec(tid)
     out = Path(out)
     sid = f"{s.NAME}.emkay-voice"
-    swap = [("ovos-skill-hello.emkay-voice", sid), ("ovos_skill_hello", s.MODULE),
-            ("ovos-skill-hello", s.NAME), ("emkay-voice/skill-template", s.REPO)]
+    # the repository's address first: the skill's name is part of it
+    swap = [("emkay-voice/ovos-skill-hello-example", s.REPO), ("ovos-skill-hello-example.emkay-voice", sid),
+            ("ovos_skill_hello_example", s.MODULE), ("ovos-skill-hello-example", s.NAME)]
     for rel in SHARED:
         text = (Path(base) / rel).read_text()
         for a, b in swap:

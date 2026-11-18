@@ -3,7 +3,7 @@
     "id": "skill",
     "kind": "skill",
     "icon": "👋",
-    "repo": "emkay-voice/skill-template",
+    "repo": "emkay-voice/ovos-skill-hello-example",
     "ref": "main",
     "name": {
       "en": "A plain skill",
@@ -35,24 +35,24 @@
     },
     "replace": [
       [
-        "ovos-skill-hello.emkay-voice",
+        "emkay-voice/ovos-skill-hello-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos-skill-hello-example.emkay-voice",
         "{{id}}"
       ],
       [
-        "ovos_skill_hello",
+        "ovos_skill_hello_example",
         "{{module}}"
       ],
       [
-        "ovos-skill-hello",
+        "ovos-skill-hello-example",
         "{{name}}"
       ],
       [
         "HelloSkill",
         "{{Class}}"
-      ],
-      [
-        "emkay-voice/skill-template",
-        "{{repo}}"
       ],
       [
         "authors = [{name = \"emkay-voice\"}]",
@@ -99,6 +99,10 @@
     },
     "replace": [
       [
+        "emkay-voice/ovos-skill-quiz-example",
+        "{{repo}}"
+      ],
+      [
         "ovos-skill-quiz-example.emkay-voice",
         "{{id}}"
       ],
@@ -113,10 +117,6 @@
       [
         "QuizSkill",
         "{{Class}}"
-      ],
-      [
-        "emkay-voice/ovos-skill-quiz-example",
-        "{{repo}}"
       ],
       [
         "authors = [{name = \"emkay-voice\"}]",
@@ -163,6 +163,10 @@
     },
     "replace": [
       [
+        "emkay-voice/ovos-skill-air-quality-example",
+        "{{repo}}"
+      ],
+      [
         "ovos-skill-air-quality-example.emkay-voice",
         "{{id}}"
       ],
@@ -177,10 +181,6 @@
       [
         "AirQualitySkill",
         "{{Class}}"
-      ],
-      [
-        "emkay-voice/ovos-skill-air-quality-example",
-        "{{repo}}"
       ],
       [
         "authors = [{name = \"emkay-voice\"}]",
@@ -227,6 +227,10 @@
     },
     "replace": [
       [
+        "emkay-voice/ovos-skill-pictures-example",
+        "{{repo}}"
+      ],
+      [
         "ovos-skill-pictures-example.emkay-voice",
         "{{id}}"
       ],
@@ -241,10 +245,6 @@
       [
         "PicturesSkill",
         "{{Class}}"
-      ],
-      [
-        "emkay-voice/ovos-skill-pictures-example",
-        "{{repo}}"
       ],
       [
         "authors = [{name = \"emkay-voice\"}]",
