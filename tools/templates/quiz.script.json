@@ -1,0 +1,46 @@
+{
+  "en-US": [
+    [
+      "quiz me",
+      "\\?"
+    ],
+    [
+      "eight",
+      "right|correct|well done|not quite|sorry|answer"
+    ],
+    [
+      "seven",
+      "right|correct|well done|not quite|sorry|answer"
+    ],
+    [
+      "green",
+      "out of"
+    ],
+    [
+      "no",
+      "thanks|fun"
+    ]
+  ],
+  "da-DK": [
+    [
+      "quiz mig",
+      "\\?"
+    ],
+    [
+      "otte",
+      "rigtigt|korrekt|godt klaret|ikke helt|desværre|svaret"
+    ],
+    [
+      "syv",
+      "rigtigt|korrekt|godt klaret|ikke helt|desværre|svaret"
+    ],
+    [
+      "grøn",
+      "ud af"
+    ],
+    [
+      "nej",
+      "tak|sjovt"
+    ]
+  ]
+}

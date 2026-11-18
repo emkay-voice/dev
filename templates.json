@@ -6,9 +6,18 @@
     "repo": "emkay-voice/skill-template",
     "ref": "main",
     "name": {
-      "en": "A plain skill", "da": "En almindelig skill", "de": "Ein einfacher Skill", "nl": "Een gewone skill",
-      "fr": "Une skill simple", "es": "Una skill sencilla", "it": "Una skill semplice", "pt-BR": "Uma skill simples",
-      "pt-PT": "Uma skill simples", "ca": "Una skill senzilla", "gl": "Unha skill sinxela", "eu": "Skill arrunt bat"
+      "en": "A plain skill",
+      "da": "En almindelig skill",
+      "de": "Ein einfacher Skill",
+      "nl": "Een gewone skill",
+      "fr": "Une skill simple",
+      "es": "Una skill sencilla",
+      "it": "Una skill semplice",
+      "pt-BR": "Uma skill simples",
+      "pt-PT": "Uma skill simples",
+      "ca": "Una skill senzilla",
+      "gl": "Unha skill sinxela",
+      "eu": "Skill arrunt bat"
     },
     "description": {
       "en": "Say a sentence, get an answer – the smallest skill there is, in all of Emkay's languages.",
@@ -25,14 +34,98 @@
       "eu": "Esan esaldi bat, jaso erantzun bat – dagoen skill txikiena, Emkayren hizkuntza guztietan."
     },
     "replace": [
-      ["ovos-skill-hello.emkay-voice", "{{id}}"],
-      ["ovos_skill_hello", "{{module}}"],
-      ["ovos-skill-hello", "{{name}}"],
-      ["HelloSkill", "{{Class}}"],
-      ["emkay-voice/skill-template", "{{repo}}"],
-      ["authors = [{name = \"emkay-voice\"}]", "authors = [{name = \"{{author}}\"}]"]
+      [
+        "ovos-skill-hello.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_hello",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-hello",
+        "{{name}}"
+      ],
+      [
+        "HelloSkill",
+        "{{Class}}"
+      ],
+      [
+        "emkay-voice/skill-template",
+        "{{repo}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
     ],
-    "skip": [".github/workflows/make-it-yours.yml"]
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
+    "id": "quiz",
+    "kind": "skill",
+    "icon": "🧠",
+    "repo": "emkay-voice/template-quiz",
+    "ref": "main",
+    "name": {
+      "en": "A quiz",
+      "da": "En quiz",
+      "de": "Ein Quiz",
+      "nl": "Een quiz",
+      "fr": "Un quiz",
+      "es": "Un concurso",
+      "it": "Un quiz",
+      "pt-BR": "Um quiz",
+      "pt-PT": "Um quiz",
+      "ca": "Un concurs",
+      "gl": "Un concurso",
+      "eu": "Galdetegi bat"
+    },
+    "description": {
+      "en": "It asks, you answer, it keeps score – a skill that listens for your answer (get_response, ask_yesno) and stops when you say stop.",
+      "da": "Den spørger, du svarer, den tæller point – en skill der lytter efter dit svar (get_response, ask_yesno) og stopper, når du siger stop.",
+      "de": "Es fragt, du antwortest, es zählt die Punkte – ein Skill, der auf deine Antwort hört (get_response, ask_yesno) und bei „Stopp“ aufhört.",
+      "nl": "Hij vraagt, jij antwoordt, hij houdt de score bij – een skill die naar je antwoord luistert (get_response, ask_yesno) en stopt als je stop zegt.",
+      "fr": "Il pose une question, tu réponds, il compte les points – une skill qui écoute ta réponse (get_response, ask_yesno) et s'arrête quand tu dis stop.",
+      "es": "Pregunta, respondes y lleva la cuenta – una skill que escucha tu respuesta (get_response, ask_yesno) y para cuando dices para.",
+      "it": "Fa una domanda, tu rispondi, tiene il punteggio – una skill che ascolta la tua risposta (get_response, ask_yesno) e si ferma quando dici stop.",
+      "pt-BR": "Ele pergunta, você responde, ele conta os pontos – uma skill que escuta sua resposta (get_response, ask_yesno) e para quando você diz pare.",
+      "pt-PT": "Pergunta, tu respondes, conta os pontos – uma skill que ouve a tua resposta (get_response, ask_yesno) e para quando dizes pára.",
+      "ca": "Pregunta, respons i compta els punts – una skill que escolta la teva resposta (get_response, ask_yesno) i s'atura quan dius para.",
+      "gl": "Pregunta, respondes e leva a conta – unha skill que escoita a túa resposta (get_response, ask_yesno) e para cando dis para.",
+      "eu": "Galdetu egiten du, zuk erantzun, eta puntuak zenbatzen ditu – zure erantzuna entzuten duen skill bat (get_response, ask_yesno)."
+    },
+    "replace": [
+      [
+        "ovos-skill-quiz.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_quiz",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-quiz",
+        "{{name}}"
+      ],
+      [
+        "QuizSkill",
+        "{{Class}}"
+      ],
+      [
+        "emkay-voice/template-quiz",
+        "{{repo}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
   },
   {
     "id": "common-reading",
@@ -41,9 +134,18 @@
     "repo": "andlo/ovos-skill-common-reading-example",
     "ref": "main",
     "name": {
-      "en": "A reading provider", "da": "En oplæsnings-udbyder", "de": "Ein Vorlese-Anbieter", "nl": "Een voorleesaanbieder",
-      "fr": "Un fournisseur de lecture", "es": "Un proveedor de lectura", "it": "Un fornitore di letture", "pt-BR": "Um provedor de leitura",
-      "pt-PT": "Um fornecedor de leitura", "ca": "Un proveïdor de lectura", "gl": "Un provedor de lectura", "eu": "Irakurketa-hornitzaile bat"
+      "en": "A reading provider",
+      "da": "En oplæsnings-udbyder",
+      "de": "Ein Vorlese-Anbieter",
+      "nl": "Een voorleesaanbieder",
+      "fr": "Un fournisseur de lecture",
+      "es": "Un proveedor de lectura",
+      "it": "Un fornitore di letture",
+      "pt-BR": "Um provedor de leitura",
+      "pt-PT": "Um fornecedor de leitura",
+      "ca": "Un proveïdor de lectura",
+      "gl": "Un provedor de lectura",
+      "eu": "Irakurketa-hornitzaile bat"
     },
     "description": {
       "en": "Emkay reads your content aloud – a feed, a web page, stories – through ovos-common-reading-pipeline-plugin. Shows the RSS and the HTML pattern.",
@@ -60,12 +162,30 @@
       "eu": "Emkayk zure edukia ozen irakurtzen du – jario bat, web-orri bat, ipuinak – ovos-common-reading-pipeline-plugin bidez. RSS eta HTML ereduak erakusten ditu."
     },
     "replace": [
-      ["andlo/ovos-skill-common-reading-example", "{{repo}}"],
-      ["ovos-skill-common-reading-example.andlo", "{{id}}"],
-      ["ovos-skill-common-reading-example", "{{name}}"],
-      ["ovos_skill_common_reading_example", "{{module}}"],
-      ["CommonReadingExample", "{{Class}}"],
-      ["\"author\": \"andlo\"", "\"author\": \"{{author}}\""]
+      [
+        "andlo/ovos-skill-common-reading-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos-skill-common-reading-example.andlo",
+        "{{id}}"
+      ],
+      [
+        "ovos-skill-common-reading-example",
+        "{{name}}"
+      ],
+      [
+        "ovos_skill_common_reading_example",
+        "{{module}}"
+      ],
+      [
+        "CommonReadingExample",
+        "{{Class}}"
+      ],
+      [
+        "\"author\": \"andlo\"",
+        "\"author\": \"{{author}}\""
+      ]
     ],
     "skip": []
   }

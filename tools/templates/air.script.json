@@ -1,0 +1,10 @@
+{
+  "en-US": [
+    ["how is the air quality", "air quality index of \\d+|index \\d+"],
+    ["what is the uv index today", "uv index is \\d+"]
+  ],
+  "da-DK": [
+    ["hvordan er luftkvaliteten", "luftkvalitetsindeks på \\d+|indeks \\d+"],
+    ["hvad er uv indekset i dag", "UV-indekset (er )?\\d+"]
+  ]
+}
