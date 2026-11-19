@@ -451,7 +451,7 @@
     "id": "common-reading",
     "kind": "reading",
     "icon": "📖",
-    "repo": "andlo/ovos-skill-common-reading-example",
+    "repo": "emkay-voice/ovos-skill-common-reading-example",
     "ref": "main",
     "name": {
       "en": "A reading provider",
@@ -483,11 +483,11 @@
     },
     "replace": [
       [
-        "andlo/ovos-skill-common-reading-example",
+        "emkay-voice/ovos-skill-common-reading-example",
         "{{repo}}"
       ],
       [
-        "ovos-skill-common-reading-example.andlo",
+        "ovos-skill-common-reading-example.emkay-voice",
         "{{id}}"
       ],
       [
