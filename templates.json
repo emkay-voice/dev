@@ -508,5 +508,63 @@
       ]
     ],
     "skip": []
+  },
+  {
+    "id": "quiet-hours",
+    "kind": "plugin",
+    "icon": "🌙",
+    "repo": "emkay-voice/ovos-phal-plugin-quiet-hours-example",
+    "ref": "main",
+    "name": {
+      "en": "A plugin: quiet hours",
+      "da": "Et plugin: stille timer",
+      "de": "Ein Plugin: Ruhezeiten",
+      "nl": "Een plugin: stille uren",
+      "fr": "Un plugin : heures calmes",
+      "es": "Un plugin: horas de silencio",
+      "it": "Un plugin: ore di silenzio",
+      "pt-BR": "Um plugin: horas de silêncio",
+      "pt-PT": "Um plugin: horas de silêncio",
+      "ca": "Un plugin: hores de silenci",
+      "gl": "Un plugin: horas de silencio",
+      "eu": "Plugin bat: ordu isilak"
+    },
+    "description": {
+      "en": "A PHAL plugin, not a skill: no sentences – it turns the device's voice down in the evening and back up in the morning, over the messagebus, with its own settings.",
+      "da": "Et PHAL-plugin, ikke en skill: ingen sætninger – det skruer ned for enhedens stemme om aftenen og op igen om morgenen, via beskedbussen og med sine egne indstillinger.",
+      "de": "Ein PHAL-Plugin, kein Skill: keine Sätze – es dreht die Stimme des Geräts abends leiser und morgens wieder lauter, über den Messagebus und mit eigenen Einstellungen.",
+      "nl": "Een PHAL-plugin, geen skill: geen zinnen – het zet de stem van het apparaat 's avonds zachter en 's ochtends weer harder, via de berichtenbus en met eigen instellingen.",
+      "fr": "Un plugin PHAL, pas une skill : pas de phrases – il baisse la voix de l'appareil le soir et la remonte le matin, via le bus de messages, avec ses propres réglages.",
+      "es": "Un plugin PHAL, no una skill: sin frases – baja la voz del dispositivo por la noche y la vuelve a subir por la mañana, a través del bus de mensajes y con sus propios ajustes.",
+      "it": "Un plugin PHAL, non una skill: niente frasi – abbassa la voce del dispositivo la sera e la rialza al mattino, tramite il bus dei messaggi e con le sue impostazioni.",
+      "pt-BR": "Um plugin PHAL, não uma skill: sem frases – abaixa a voz do dispositivo à noite e aumenta de novo de manhã, pelo barramento de mensagens e com as próprias configurações.",
+      "pt-PT": "Um plugin PHAL, não uma skill: sem frases – baixa a voz do dispositivo à noite e volta a subi-la de manhã, através do barramento de mensagens e com as suas próprias definições.",
+      "ca": "Un plugin PHAL, no una skill: sense frases – abaixa la veu del dispositiu al vespre i la torna a pujar al matí, pel bus de missatges i amb els seus propis ajustos.",
+      "gl": "Un plugin PHAL, non unha skill: sen frases – baixa a voz do dispositivo pola noite e volve subila pola mañá, polo bus de mensaxes e cos seus propios axustes.",
+      "eu": "PHAL plugin bat, ez skill bat: esaldirik gabe – gailuaren ahotsa jaisten du arratsaldean eta berriro igotzen goizean, mezu-busaren bidez eta bere ezarpenekin."
+    },
+    "replace": [
+      [
+        "emkay-voice/ovos-phal-plugin-quiet-hours-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos_phal_plugin_quiet_hours_example",
+        "{{module}}"
+      ],
+      [
+        "ovos-phal-plugin-quiet-hours-example",
+        "{{name}}"
+      ],
+      [
+        "QuietHoursPlugin",
+        "{{Class}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": []
   }
 ]

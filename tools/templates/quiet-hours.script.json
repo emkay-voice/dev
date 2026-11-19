@@ -1,0 +1,4 @@
+{
+  "en-US": [["emit:ovos.quiet_hours.status", "bus:\"type\": ?\"ovos\\.quiet_hours\\.status\\.response\".*\"start\": ?\"22:00\""]],
+  "da-DK": [["emit:ovos.quiet_hours.status", "bus:\"type\": ?\"ovos\\.quiet_hours\\.status\\.response\".*\"start\": ?\"22:00\""]]
+}
