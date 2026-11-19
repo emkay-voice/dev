@@ -8,7 +8,8 @@
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <!-- See my skill (emkay-voice/dev#2): every skill people show – public GitHub
      repositories with the topic emkay-skill (tools/build_gallery.mjs, every
-     six hours) – to search, filter by language and sort, like the store -->
+     six hours) – to search, filter by language and sort, like the store – and
+     below them the examples to start from (the templates) -->
 <style>
   :root { --bg: #05070a; --card: #141b24; --ink: #fff; --muted: #8a96a8; --line: #232c38;
           --accent: #22a7f0; --accent-strong: #1478c8; --soft: #c7d0dc; }
@@ -46,6 +47,9 @@
   .gal .ex { color: #fff; font-style: italic; }
   .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
   .empty { color: var(--muted); grid-column: 1 / -1; }
+  h2 { font-weight: 400; font-size: 24px; margin: 40px 0 6px; }
+  .gal .tag.example { color: #9fd3f7; border-color: #2a5878; }
+  .gal .icon { font-size: 26px; line-height: 1; margin: 0 0 6px; }
   .how { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 22px; margin-top: 28px; }
   footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 48px; }
 </style>
@@ -73,7 +77,14 @@
 </div>
 <div class="cards" id="cards"></div>
 
-<div class="how"><p data-t="gal_how"></p><p class="small" data-t="gal_away"></p></div>
+<!-- the examples to start from: the templates (templates/index.json, the same
+     list as Emkay: New skill) – theirs is the topic-free side of the page, so a
+     repository made from one is only shown above if its owner adds the topic -->
+<h2 id="examples" data-t="gal_ex_h"></h2>
+<p class="lead" data-t="gal_ex_lead"></p>
+<div class="cards" id="examples-cards"></div>
+
+<div class="how"><p data-t="gal_how"></p><p data-t="gal_how_dev"></p><p class="small" data-t="gal_away"></p></div>
 
 <footer><p><a href="../" data-t="gal_back"></a> · <a href="https://store.emkay.ai/" data-t="f_store"></a></p></footer>
 </main>
@@ -143,6 +154,36 @@ function show() {
   history.replaceState(null, "", u);
 }
 
+// the examples: templates/index.json, names and descriptions per language
+let examples = [];
+function showExamples() {
+  const box = $("examples-cards");
+  box.replaceChildren();
+  const pick = (o) => (o && (o[lang] ?? o[lang.split("-")[0]] ?? o.en)) || "";
+  for (const x of examples) {
+    const el = document.createElement("div");
+    el.className = "card gal";
+    el.innerHTML = `<div class="icon"></div><h3></h3><p class="who"><span></span><span class="tag example"></span></p>
+      <p class="about"></p><div class="btns"></div>`;
+    el.querySelector(".icon").textContent = x.icon || "🧩";
+    el.querySelector("h3").textContent = pick(x.name);
+    el.querySelector(".who span").textContent = x.repo;
+    el.querySelector(".tag").textContent = t("gal_ex_tag");
+    el.querySelector(".about").textContent = pick(x.description);
+    const btns = el.querySelector(".btns");
+    const link = (href, text, ghost) => {
+      const a = document.createElement("a");
+      a.className = "open small" + (ghost ? " ghost" : "");
+      a.target = "_blank"; a.rel = "noopener"; a.href = href; a.textContent = text;
+      btns.append(a);
+    };
+    // a plugin has no sentences to try: its code is the thing to see
+    if (x.kind !== "plugin") link(`https://app.emkay.ai/?install=github:${x.repo}`, t("gal_try"));
+    link(`https://github.com/${x.repo}`, t("gal_ex_code"), true);
+    box.append(el);
+  }
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.title = `${t("gal_h")} – Emkay Dev`;
@@ -150,6 +191,7 @@ function render() {
   document.querySelectorAll("[data-t-ph]").forEach((el) => { el.placeholder = t(el.dataset.tPh); });
   langNames();
   show();
+  showExamples();
 }
 
 const picker = $("lang");
@@ -165,6 +207,8 @@ $("langs").onchange = show;
 $("sort").onchange = show;
 render();
 Gallery.load("../").then((g) => { gallery = g; show(); });
+fetch("../templates/index.json").then((r) => r.ok ? r.json() : []).catch(() => [])
+  .then((list) => { examples = list; showExamples(); });
 </script>
 </body>
 </html>
