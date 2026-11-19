@@ -384,6 +384,70 @@
     ]
   },
   {
+    "id": "radio",
+    "kind": "skill",
+    "icon": "📻",
+    "repo": "emkay-voice/ovos-skill-radio-example",
+    "ref": "main",
+    "name": {
+      "en": "Your own radio",
+      "da": "Din egen radio",
+      "de": "Dein eigenes Radio",
+      "nl": "Je eigen radio",
+      "fr": "Ta propre radio",
+      "es": "Tu propia radio",
+      "it": "La tua radio",
+      "pt-BR": "Seu próprio rádio",
+      "pt-PT": "O teu rádio",
+      "ca": "La teva ràdio",
+      "gl": "A túa radio",
+      "eu": "Zure irratia"
+    },
+    "description": {
+      "en": "\"Play Emkay Chill\" – internet radio stations played with OpenVoiceOS' media player (OCP: a media skill).",
+      "da": "\"Spil Emkay Chill\" – netradiostationer spillet med OpenVoiceOS' medieafspiller (OCP: en medie-skill).",
+      "de": "„Spiele Emkay Chill“ – Internetradiosender, gespielt mit dem Mediaplayer von OpenVoiceOS (OCP: ein Medien-Skill).",
+      "nl": "“Speel Emkay Chill” – internetradiozenders, gespeeld met de mediaspeler van OpenVoiceOS (OCP: een mediaskill).",
+      "fr": "« Joue Emkay Chill » – des radios internet jouées avec le lecteur multimédia d'OpenVoiceOS (OCP : une skill média).",
+      "es": "«Reproduce Emkay Chill»: emisoras de radio por internet con el reproductor de OpenVoiceOS (OCP: una skill multimedia).",
+      "it": "«Riproduci Emkay Chill» – stazioni radio su internet con il lettore multimediale di OpenVoiceOS (OCP: una skill multimediale).",
+      "pt-BR": "“Toque Emkay Chill” – rádios da internet tocadas com o player de mídia do OpenVoiceOS (OCP: uma skill de mídia).",
+      "pt-PT": "“Toca Emkay Chill” – rádios da internet tocadas com o leitor multimédia do OpenVoiceOS (OCP: uma skill de multimédia).",
+      "ca": "«Reprodueix Emkay Chill»: emissores de ràdio per internet amb el reproductor de l'OpenVoiceOS (OCP: una skill multimèdia).",
+      "gl": "«Reproducir Emkay Chill»: emisoras de radio por internet co reprodutor de OpenVoiceOS (OCP: unha skill multimedia).",
+      "eu": "«Erreproduzitu Emkay Chill»: interneteko irrati kateak OpenVoiceOS-en multimedia erreproduzitzailearekin (OCP: multimedia skill bat)."
+    },
+    "replace": [
+      [
+        "emkay-voice/ovos-skill-radio-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos-skill-radio-example.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_radio_example",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-radio-example",
+        "{{name}}"
+      ],
+      [
+        "RadioSkill",
+        "{{Class}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
     "id": "common-reading",
     "kind": "reading",
     "icon": "📖",
