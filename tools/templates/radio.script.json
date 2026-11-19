@@ -1,4 +1,4 @@
 {
-  "en-US": [["play groove salad", "bus:groovesalad-128-mp3"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]],
-  "da-DK": [["spil groove salad", "bus:groovesalad-128-mp3"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]]
+  "en-US": [["play emkay chill", "bus:\"type\": ?\"ovos\\.common_play\\.play\".*ice2\\.somafm\\.com/groovesalad.*ovos-skill-radio-example|\"type\": ?\"ovos\\.common_play\\.play\".*ovos-skill-radio-example.*ice2\\.somafm\\.com/groovesalad"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]],
+  "da-DK": [["spil emkay chill", "bus:\"type\": ?\"ovos\\.common_play\\.play\".*ice2\\.somafm\\.com/groovesalad.*ovos-skill-radio-example|\"type\": ?\"ovos\\.common_play\\.play\".*ovos-skill-radio-example.*ice2\\.somafm\\.com/groovesalad"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]]
 }

@@ -1,0 +1,22 @@
+{
+  "en-US": [
+    [
+      "blah blah clock blah",
+      "what time is it"
+    ],
+    [
+      "blorp the zibble",
+      "understand|sorry|know|another way|rephrase"
+    ]
+  ],
+  "da-DK": [
+    [
+      "æggeur tak",
+      "sæt en timer"
+    ],
+    [
+      "blorp zibble",
+      "forstå|forstod|ved ikke|undskyld|anden måde|anden måde"
+    ]
+  ]
+}

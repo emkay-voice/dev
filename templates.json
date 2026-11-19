@@ -320,6 +320,70 @@
     ]
   },
   {
+    "id": "hints",
+    "kind": "skill",
+    "icon": "💡",
+    "repo": "emkay-voice/ovos-skill-hints-example",
+    "ref": "main",
+    "name": {
+      "en": "Hints when nobody understood",
+      "da": "Hint, når ingen forstod",
+      "de": "Tipps, wenn niemand verstand",
+      "nl": "Tips als niemand het begreep",
+      "fr": "Des astuces quand personne n'a compris",
+      "es": "Pistas cuando nadie entendió",
+      "it": "Suggerimenti quando nessuno ha capito",
+      "pt-BR": "Dicas quando ninguém entendeu",
+      "pt-PT": "Dicas quando ninguém percebeu",
+      "ca": "Pistes quan ningú no ha entès",
+      "gl": "Pistas cando ninguén entendeu",
+      "eu": "Pistak inork ulertu ez duenean"
+    },
+    "description": {
+      "en": "\"Um, the clock thing\" – \"Did you mean: what time is it?\" A fallback skill: no intents, it answers when no other skill understood.",
+      "da": "\"Øh, det med klokken\" – \"Mente du: hvad er klokken?\" En fallback-skill: ingen intents, den svarer, når ingen anden skill forstod.",
+      "de": "„Äh, das mit der Uhr“ – „Meintest du: wie spät ist es?“ Ein Fallback-Skill: keine Intents, er antwortet, wenn kein anderer Skill verstanden hat.",
+      "nl": "“Eh, dat van de klok” – “Bedoelde je: hoe laat is het?” Een fallback-skill: geen intents, hij antwoordt als geen andere skill het begreep.",
+      "fr": "« Euh, le truc de l'heure » – « Tu voulais dire : quelle heure est-il ? » Une skill fallback : pas d'intents, elle répond quand aucune autre skill n'a compris.",
+      "es": "«Eh, lo del reloj» – «¿Querías decir: qué hora es?» Una skill fallback: sin intents, responde cuando ninguna otra skill entendió.",
+      "it": "«Ehm, la cosa dell'orologio» – «Volevi dire: che ore sono?» Una skill fallback: niente intent, risponde quando nessun'altra skill ha capito.",
+      "pt-BR": "“É, aquilo do relógio” – “Você quis dizer: que horas são?” Uma skill fallback: sem intents, responde quando nenhuma outra skill entendeu.",
+      "pt-PT": "“Hã, aquilo do relógio” – “Querias dizer: que horas são?” Uma skill fallback: sem intents, responde quando nenhuma outra skill percebeu.",
+      "ca": "«Eh, allò del rellotge» – «Volies dir: quina hora és?» Una skill fallback: sense intents, respon quan cap altra skill no ha entès.",
+      "gl": "«Eh, o do reloxo» – «Querías dicir: que hora é?» Unha skill fallback: sen intents, responde cando ningunha outra skill entendeu.",
+      "eu": "«Eh, erlojuarena» – «Hau esan nahi zenuen: zer ordu da?» Fallback skill bat: intent-ik gabe, beste inongo skill-ek ulertu ez duenean erantzuten du."
+    },
+    "replace": [
+      [
+        "emkay-voice/ovos-skill-hints-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos-skill-hints-example.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_hints_example",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-hints-example",
+        "{{name}}"
+      ],
+      [
+        "HintsSkill",
+        "{{Class}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
     "id": "common-reading",
     "kind": "reading",
     "icon": "📖",
