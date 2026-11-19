@@ -1,0 +1,4 @@
+{
+  "en-US": [["play groove salad", "bus:groovesalad-128-mp3"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]],
+  "da-DK": [["spil groove salad", "bus:groovesalad-128-mp3"], ["stop", "bus:\"type\": ?\"(mycroft.stop|ovos.common_play.stop)"]]
+}

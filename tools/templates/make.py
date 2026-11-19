@@ -14,7 +14,7 @@ template's own is in tools/templates/<id>.py:
     CODE                        the package's __init__.py
     LOCALE                      {lang: {file name: text}}  (every language the same files)
     SKILL_JSON                  {lang: {name, description, examples}}
-    GOLDEN                      {lang: [(utterance, intent file)]}
+    GOLDEN                      {lang: [(utterance, intent file or None: the skill must take it)]}
     TEST                        extra pytest code (gets pkg, SKILL_ID, Message, FakeBus)
     README                      the README, Markdown (the shared "Try it" part is added)
     FILES                       optional {path: text} more files at the repository root
@@ -207,9 +207,12 @@ def make(tid, out, base):
     assert sorted(s.GOLDEN) == sorted(LANGS)
     for lang, rows in s.GOLDEN.items():
         for u, i in rows:   # a golden sentence is one the intent says, word for word
+            if i is None:   # no intent: a question for common query, a fallback …
+                continue
             said = set().union(*(expand(l) for l in s.LOCALE[lang][i].splitlines() if l.strip()))
             assert u.lower() in said, f"{lang}: {u!r} is not a sentence of {i}"
-        lines = [json.dumps({"skill_id": sid, "utterance": u, "lang": lang, "intent_label": i}, ensure_ascii=False)
+        lines = [json.dumps({"skill_id": sid, "utterance": u, "lang": lang,
+                             **({"intent_label": i} if i else {})}, ensure_ascii=False)
                  for u, i in rows]
         (gold / f"golden_utterances_{lang}.jsonl").write_text("\n".join(lines) + "\n")
     (out / "tests").mkdir(exist_ok=True)

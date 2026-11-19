@@ -256,6 +256,70 @@
     ]
   },
   {
+    "id": "answers",
+    "kind": "skill",
+    "icon": "💬",
+    "repo": "emkay-voice/ovos-skill-answers-example",
+    "ref": "main",
+    "name": {
+      "en": "Your own answers",
+      "da": "Dine egne svar",
+      "de": "Deine eigenen Antworten",
+      "nl": "Je eigen antwoorden",
+      "fr": "Tes propres réponses",
+      "es": "Tus propias respuestas",
+      "it": "Le tue risposte",
+      "pt-BR": "Suas próprias respostas",
+      "pt-PT": "As tuas respostas",
+      "ca": "Les teves respostes",
+      "gl": "As túas respostas",
+      "eu": "Zure erantzunak"
+    },
+    "description": {
+      "en": "Questions and answers in a list – where the keys are, when the bins are emptied – answered when someone asks something like them (common query: no intents).",
+      "da": "Spørgsmål og svar i en liste – hvor nøglerne er, hvornår skraldet hentes – besvaret, når nogen spørger om noget lignende (common query: ingen intents).",
+      "de": "Fragen und Antworten in einer Liste – wo die Schlüssel sind, wann der Müll abgeholt wird – beantwortet, wenn jemand etwas Ähnliches fragt (Common Query: keine Intents).",
+      "nl": "Vragen en antwoorden in een lijst – waar de sleutels zijn, wanneer het afval wordt opgehaald – beantwoord als iemand iets vergelijkbaars vraagt (common query: geen intents).",
+      "fr": "Des questions et réponses dans une liste – où sont les clés, quand passent les poubelles – répondues quand quelqu'un demande quelque chose d'approchant (common query : pas d'intents).",
+      "es": "Preguntas y respuestas en una lista – dónde están las llaves, cuándo pasa la basura – respondidas cuando alguien pregunta algo parecido (common query: sin intents).",
+      "it": "Domande e risposte in un elenco – dove sono le chiavi, quando passa la spazzatura – risposte quando qualcuno chiede qualcosa di simile (common query: niente intent).",
+      "pt-BR": "Perguntas e respostas numa lista – onde estão as chaves, quando o lixo é recolhido – respondidas quando alguém pergunta algo parecido (common query: sem intents).",
+      "pt-PT": "Perguntas e respostas numa lista – onde estão as chaves, quando é recolhido o lixo – respondidas quando alguém pergunta algo parecido (common query: sem intents).",
+      "ca": "Preguntes i respostes en una llista – on són les claus, quan passen les escombraries – respostes quan algú pregunta alguna cosa semblant (common query: sense intents).",
+      "gl": "Preguntas e respostas nunha lista – onde están as chaves, cando recollen o lixo – respondidas cando alguén pregunta algo parecido (common query: sen intents).",
+      "eu": "Galderak eta erantzunak zerrenda batean – non dauden giltzak, noiz biltzen duten zaborra – norbaitek antzeko zerbait galdetzean erantzunak (common query: intent-ik gabe)."
+    },
+    "replace": [
+      [
+        "emkay-voice/ovos-skill-answers-example",
+        "{{repo}}"
+      ],
+      [
+        "ovos-skill-answers-example.emkay-voice",
+        "{{id}}"
+      ],
+      [
+        "ovos_skill_answers_example",
+        "{{module}}"
+      ],
+      [
+        "ovos-skill-answers-example",
+        "{{name}}"
+      ],
+      [
+        "AnswersSkill",
+        "{{Class}}"
+      ],
+      [
+        "authors = [{name = \"emkay-voice\"}]",
+        "authors = [{name = \"{{author}}\"}]"
+      ]
+    ],
+    "skip": [
+      ".github/workflows/make-it-yours.yml"
+    ]
+  },
+  {
     "id": "common-reading",
     "kind": "reading",
     "icon": "📖",
