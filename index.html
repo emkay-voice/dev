@@ -104,6 +104,13 @@
   .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
   .gal-empty { color: var(--muted); }
   .gal-all { margin: 16px 0 18px; }
+  .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 760px) { .help-grid { grid-template-columns: 1fr; } }
+  .card.help { padding: 6px 22px 14px; }
+  .card.help h3 { margin: 14px 0 6px; font-size: 18px; }
+  .card.help ul { margin: 0; padding-left: 20px; }
+  .card.help li { margin: 0 0 10px; color: var(--soft); }
+  .card.help .small { margin: 0 0 6px; }
   footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; }
 </style>
 </head>
@@ -274,6 +281,22 @@ def handle_hello(self, message):
     <li data-t="next_3"></li>
   </ol>
   <p class="small" data-t="next_more"></p>
+</div>
+
+<!-- Help (dev#3): when it doesn't work, where to ask (Matrix, discussions –
+     not issues), where to read; Emkay: Get help in the extension opens it -->
+<h2 id="help" data-t="help_h"></h2>
+<p class="lead" data-t="help_lead"></p>
+<div class="help-grid">
+  <div class="card help"><h3 data-t="help_fix_h"></h3><ul>
+    <li data-t="help_fix_1"></li><li data-t="help_fix_2"></li><li data-t="help_fix_3"></li>
+    <li data-t="help_fix_4"></li><li data-t="help_fix_5"></li><li data-t="help_fix_6"></li></ul></div>
+  <div class="card help"><h3 data-t="help_ask_h"></h3><ul>
+    <li data-t="help_ask_1"></li><li data-t="help_ask_2"></li><li data-t="help_ask_3"></li></ul>
+    <p class="small" data-t="help_ask_note"></p>
+    <h3 data-t="help_read_h"></h3><ul>
+    <li data-t="help_read_1"></li><li data-t="help_read_2"></li><li data-t="help_read_3"></li>
+    <li data-t="help_read_4"></li><li data-t="help_read_5"></li><li data-t="help_read_6"></li></ul></div>
 </div>
 
 <footer>
