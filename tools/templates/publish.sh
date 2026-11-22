@@ -9,16 +9,14 @@ cd "$dir"
 if ! gh repo view "$repo" > /dev/null 2>&1; then
   git init -q -b main
   git add -A
-  git commit -q -m "First version, from emkay-voice/dev tools/templates" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_018Y3WsCoSk4UooRJWDJbrAV"
+  git commit -q -m "First version, from emkay-voice/dev tools/templates"
   gh repo create "$repo" --public --description "$desc" --source . --push > /dev/null
 else
   rm -rf /tmp/tpl-publish && git clone -q "https://github.com/$repo" /tmp/tpl-publish
   rsync -a --delete --exclude .git ./ /tmp/tpl-publish/
   cd /tmp/tpl-publish
   git add -A
-  git diff --cached --quiet || git commit -q -m "Update from emkay-voice/dev tools/templates" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_018Y3WsCoSk4UooRJWDJbrAV"
+  git diff --cached --quiet || git commit -q -m "Update from emkay-voice/dev tools/templates"
   git push -q
 fi
 gh api -X PATCH "repos/$repo" -F is_template=true -f description="$desc" -f homepage="https://dev.emkay.ai" > /dev/null

@@ -199,7 +199,8 @@ def make(tid, out, base):
         d.mkdir(parents=True, exist_ok=True)
         for name, text in files.items():
             (d / name).write_text(text.strip("\n") + "\n")
-        sj = {"skill_id": sid, "source": f"https://github.com/{s.REPO}", **s.SKILL_JSON[lang],
+        sj = {"skill_id": sid, "source": f"https://github.com/{s.REPO}", "package_name": s.NAME,
+              "pip_spec": s.NAME, "license": "Apache-2.0", "author": "emkay-voice", **s.SKILL_JSON[lang],
               "tags": list(s.KEYWORDS[:3]) + ["emkay"]}
         (d / "skill.json").write_text(json.dumps(sj, ensure_ascii=False, indent=2) + "\n")
     gold = out / "test" / "end2end"

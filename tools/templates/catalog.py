@@ -114,7 +114,8 @@ def entry(tid):
         "description": {k: t[1] for k, t in zip(KEYS, texts)},
         # the repository's address first: the skill's name is part of it
         "replace": [[s.REPO, "{{repo}}"], [sid, "{{id}}"], [s.MODULE, "{{module}}"], [s.NAME, "{{name}}"],
-                    [s.CLASS, "{{Class}}"], ['authors = [{name = "emkay-voice"}]', 'authors = [{name = "{{author}}"}]']],
+                    [s.CLASS, "{{Class}}"], ['authors = [{name = "emkay-voice"}]', 'authors = [{name = "{{author}}"}]'],
+                    ['"author": "emkay-voice"', '"author": "{{author}}"']],
         "skip": [".github/workflows/make-it-yours.yml"],
     }
 
