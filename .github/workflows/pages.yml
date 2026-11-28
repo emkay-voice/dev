@@ -5,12 +5,12 @@
 #   gallery/     See my skill: public repos with the topic emkay-skill
 #                (tools/build_gallery.mjs) – rebuilt every six hours, so a
 #                skill its owner takes away is gone within hours
-#   vscode/      the extension (emkay-voice/vscode-emkay, built), for VS Code
+#   vscode/      the extension (emkay-voice/code, built), for VS Code
 #                for the Web's "Install Extension from Location…" until it is
 #                on the Marketplace / Open VSX
 #
 # Built on every push, every six hours (the gallery; a template or the
-# extension may have changed), by hand, and when vscode-emkay or a template asks
+# extension may have changed), by hand, and when emkay-voice/code or a template asks
 # (repository_dispatch "rebuild").
 name: Build and publish
 
@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: emkay-voice/vscode-emkay
+          repository: emkay-voice/code
           path: ext
       - uses: actions/setup-node@v4
         with:
@@ -48,6 +48,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html texts.js gallery.js icon.svg CNAME _site/
+          mkdir -p _site/code && cp code/index.html _site/code/
           mkdir -p _site/gallery && cp gallery/index.html _site/gallery/
           cp -r img _site/
       - name: The template catalog

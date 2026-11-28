@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emkay Code – make a voice skill and hear it answer</title>
+<meta name="description" content="Make an OpenVoiceOS skill in your browser and talk to it a second later: VS Code with Emkay next to your code. Nothing to install.">
+<meta name="theme-color" content="#05070a">
+<meta property="og:title" content="Emkay Code – make a voice skill and hear it answer">
+<meta property="og:description" content="VS Code in the browser with Emkay next to your code: write a skill, save, talk to it. Nothing to install.">
+<meta property="og:image" content="https://emkay.ai/emkay.png">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<style>
+  :root { --bg: #05070a; --card: #141b24; --ink: #fff; --muted: #8a96a8; --line: #232c38;
+          --accent: #22a7f0; --accent-strong: #1478c8; --soft: #c7d0dc; --good: #4cd38a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  code, kbd { font: 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; background: #1b2430;
+              border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: #fff; }
+  kbd { border-bottom-width: 2px; }
+  main { max-width: 1040px; margin: 0 auto; padding: 0 22px 60px; }
+
+  .top { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; }
+  .top a.home { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: .25em; }
+  .top select { background: var(--card); color: var(--soft); border: 1px solid var(--line);
+                border-radius: 20px; padding: 6px 12px; font: inherit; font-size: 14px; }
+
+  .hero { display: grid; grid-template-columns: .95fr 1.05fr; gap: 36px; align-items: center; padding: 30px 0 18px; }
+  h1 { font-weight: 300; letter-spacing: .3em; font-size: 44px; margin: 0; }
+  h1 span { color: var(--accent); }
+  .tag { color: var(--soft); margin: 14px 0 28px; font-size: 21px; line-height: 1.45; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .open { display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+          padding: 14px 30px; border-radius: 40px; font-size: 17px; }
+  .open:hover { background: var(--accent-strong); }
+  .open.ghost { background: #1b2430; }
+  .open.ghost:hover { background: #253142; }
+  .open.small { padding: 9px 20px; font-size: 15px; }
+  .card p.small { color: var(--muted); font-size: 14px; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 16px; }
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 16px; }
+    .buttons { justify-content: center; }
+  }
+
+  /* the little demo: an editor and Emkay next to it (script below) */
+  .demo { width: 100%; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .6)); }
+  .demo .code { font: 13px ui-monospace, Menlo, Consolas, monospace; fill: #d4d4d4; }
+  .demo .code .k { fill: #569cd6; } .demo .code .s { fill: #ce9178; } .demo .code .f { fill: #dcdcaa; }
+  .demo .code .c { fill: #6a9955; } .demo .code .new { fill: #fff; }
+  .demo .tabtxt { font: 12px system-ui, sans-serif; fill: #ccc; }
+  .demo .status { font: 12px system-ui, sans-serif; fill: #fff; }
+  .demo .eye { transform-box: fill-box; transform-origin: center; transition: transform .12s ease-out; }
+  .demo.blink .eye { transform: scaleY(.08); }
+  .demo.thinking .eye { transform: scaleY(.62); }
+  .demo.happy .eye { transform: scale(1.12); }
+  .demo .caption { font: 13px system-ui, sans-serif; fill: var(--soft); }
+  .demo .caption.said { fill: #fff; }
+  .demo .cursor { animation: blinkc 1s steps(1) infinite; }
+  @keyframes blinkc { 50% { opacity: 0; } }
+  .demo .saved { opacity: 0; transition: opacity .3s; }
+  .demo.saved .saved { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .demo .cursor { animation: none; } }
+
+  h2 { font-weight: 500; font-size: 24px; margin: 48px 0 12px; }
+  .lead { color: var(--soft); margin: 0 0 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 4px 22px; }
+  .card.watch { display: flex; gap: 22px; align-items: flex-start; padding: 18px 22px; }
+  .card.watch img { width: 240px; height: auto; border-radius: 14px; flex: none; }
+  .card.watch p { margin: 0 0 12px; }
+  @media (max-width: 640px) { .card.watch { flex-direction: column; align-items: center; } }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .cards .card { padding: 16px 20px; display: flex; flex-direction: column; }
+  .cards h3 { margin: 0 0 6px; font-size: 17px; }
+  .cards p { margin: 0 0 10px; color: var(--soft); font-size: 15px; }
+  .cards .icon { font-size: 26px; line-height: 1; margin-bottom: 8px; }
+  .cards .card .open { margin-top: auto; align-self: flex-start; }
+  .num { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: var(--accent);
+         color: #fff; align-items: center; justify-content: center; font-weight: 600; margin-bottom: 10px; }
+  .say { color: #fff; font-style: italic; }
+  ol.steps { padding-left: 0; list-style: none; counter-reset: s; }
+  ol.steps > li { counter-increment: s; position: relative; padding: 10px 0 10px 46px; border-bottom: 1px solid var(--line); }
+  ol.steps > li:last-child { border-bottom: 0; }
+  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: 10px; width: 30px; height: 30px;
+                          border-radius: 50%; background: #1b2430; border: 1px solid var(--accent);
+                          display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .copy { cursor: pointer; }
+  .copy::after { content: " ⧉"; color: var(--muted); }
+  .copy.done::after { content: " ✓"; color: var(--good); }
+  .files { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .file { background: #0d1116; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .file .name { background: #1b2430; padding: 6px 12px; font: 13px ui-monospace, Menlo, monospace; color: var(--soft); overflow-wrap: anywhere; }
+  .file pre { margin: 0; padding: 10px 12px; font: 13px/1.5 ui-monospace, Menlo, monospace; color: #d4d4d4; white-space: pre-wrap; }
+  .file p { margin: 0; padding: 0 12px 12px; color: var(--muted); font-size: 14px; }
+  .tpl .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .tpl.soon { border-style: dashed; }
+  /* See my skill: the gallery (tools/build_gallery.mjs) */
+  .gal .who { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .gal .who img { width: 22px; height: 22px; border-radius: 50%; }
+  .gal .tag { display: inline-block; font-size: 12px; color: #e8c27a; border: 1px solid #6b5a33; border-radius: 99px; padding: 1px 8px; margin-left: auto; }
+  .gal .ex { color: #fff; font-style: italic; }
+  .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .gal-empty { color: var(--muted); }
+  .gal-all { margin: 16px 0 18px; }
+  .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 760px) { .help-grid { grid-template-columns: 1fr; } }
+  .card.help { padding: 6px 22px 14px; }
+  .card.help h3 { margin: 14px 0 6px; font-size: 18px; }
+  .card.help ul { margin: 0; padding-left: 20px; }
+  .card.help li { margin: 0 0 10px; color: var(--soft); }
+  .card.help .small { margin: 0 0 6px; }
+  footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; }
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+  <a class="home" href="../">← EMKAY DEV</a>
+  <select id="lang" aria-label="Language"></select>
+</div>
+
+<section class="hero">
+  <div>
+    <h1>EMKAY <span>CODE</span></h1>
+    <p class="tag" data-t="tag"></p>
+    <div class="buttons">
+      <a class="open" href="#browser" data-t="btn_browser"></a>
+      <a class="open ghost" href="https://github.com/emkay-voice/ovos-skill-hello-example" data-t="btn_template"></a>
+    </div>
+    <p class="note" data-t="note"></p>
+  </div>
+
+  <!-- the demo: a line is added to hello.intent, saved, and Emkay answers it -->
+  <svg class="demo" id="demo" viewBox="0 0 560 360" role="img" aria-label="VS Code with Emkay next to it">
+    <rect x="1" y="1" width="558" height="358" rx="12" fill="#1e1e1e" stroke="#2a313b" stroke-width="2"/>
+    <rect x="1" y="1" width="558" height="30" rx="12" fill="#2d2d2d"/>
+    <rect x="1" y="20" width="558" height="11" fill="#2d2d2d"/>
+    <circle cx="20" cy="16" r="5" fill="#ff5f57"/><circle cx="36" cy="16" r="5" fill="#febc2e"/><circle cx="52" cy="16" r="5" fill="#28c840"/>
+    <!-- editor -->
+    <rect x="1" y="31" width="330" height="26" fill="#252526"/>
+    <rect x="10" y="31" width="118" height="26" fill="#1e1e1e"/>
+    <text class="tabtxt" x="20" y="48">hello.intent</text>
+    <text class="tabtxt" x="140" y="48" opacity=".6">__init__.py</text>
+    <g class="code">
+      <text x="14" y="84"><tspan fill="#858585">1  </tspan><tspan data-t="ex_intent1"></tspan></text>
+      <text x="14" y="106"><tspan fill="#858585">2  </tspan><tspan data-t="ex_intent2"></tspan></text>
+      <text x="14" y="128"><tspan fill="#858585">3  </tspan><tspan class="new" id="typed"></tspan><tspan class="cursor">▍</tspan></text>
+      <text x="14" y="190" fill="#858585">__init__.py</text>
+      <text x="14" y="214"><tspan class="f">@intent_handler</tspan>(<tspan class="s">"hello.intent"</tspan>)</text>
+      <text x="14" y="236"><tspan class="k">def </tspan><tspan class="f">handle_hello</tspan>(self, message):</text>
+      <text x="14" y="258">    self.<tspan class="f">speak_dialog</tspan>(<tspan class="s">"hello"</tspan>)</text>
+    </g>
+    <!-- Emkay, in its panel -->
+    <rect x="332" y="31" width="227" height="301" fill="#05070a"/>
+    <rect x="332" y="31" width="227" height="26" fill="#252526"/>
+    <text class="tabtxt" x="344" y="48">Emkay</text>
+    <rect x="404" y="66" width="82" height="16" rx="8" fill="#22a7f0"/>
+    <text x="445" y="78" text-anchor="middle" style="font: 600 9px system-ui; letter-spacing: .08em" fill="#0b1a24">DEV</text>
+    <g fill="none" stroke-linecap="round">
+      <g class="eye"><circle cx="410" cy="140" r="20" stroke="#6d6d6d" stroke-width="10"/>
+        <path d="M390 140a20 20 0 0 1 40 0" stroke="#f5f5f5" stroke-width="10"/></g>
+      <g class="eye"><circle cx="480" cy="140" r="20" stroke="#6d6d6d" stroke-width="10"/>
+        <path d="M460 140a20 20 0 0 1 40 0" stroke="#f5f5f5" stroke-width="10"/></g>
+      <path id="mouth" d="M420 196 Q445 214 470 196" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+    </g>
+    <text id="cap1" class="caption" x="445" y="262" text-anchor="middle"></text>
+    <text id="cap2" class="caption" x="445" y="280" text-anchor="middle"></text>
+    <rect x="340" y="298" width="211" height="26" rx="6" fill="#1b2430" stroke="#2a313b"/>
+    <text id="input" x="348" y="315" style="font: 12px system-ui" fill="#8a96a8"></text>
+    <!-- status bar -->
+    <rect x="1" y="332" width="558" height="27" fill="#007acc"/>
+    <rect x="1" y="348" width="558" height="11" rx="0" fill="#007acc"/>
+    <text class="status" x="14" y="350" id="status">▷ Emkay</text>
+    <text class="status saved" x="546" y="350" text-anchor="end" data-t="demo_saved"></text>
+  </svg>
+</section>
+
+<h2 data-t="how_h"></h2>
+<p class="lead" data-t="how_lead"></p>
+<div class="cards">
+  <div class="card"><div class="num">1</div><h3 data-t="how_1_h"></h3><p data-t="how_1_p"></p></div>
+  <div class="card"><div class="num">2</div><h3 data-t="how_2_h"></h3><p data-t="how_2_p"></p></div>
+  <div class="card"><div class="num">3</div><h3 data-t="how_3_h"></h3><p data-t="how_3_p"></p></div>
+</div>
+
+<h2 data-t="ways_h"></h2>
+<p class="lead" data-t="ways_lead"></p>
+<div class="cards">
+  <div class="card"><div class="icon">🌐</div><h3 data-t="way_browser_h"></h3><p data-t="way_browser_p"></p>
+    <a class="open small" href="#browser" data-t="way_browser_btn"></a></div>
+  <div class="card"><div class="icon">☁️</div><h3 data-t="way_cs_h"></h3><p data-t="way_cs_p"></p>
+    <a class="open small ghost" href="https://codespaces.new/emkay-voice/ovos-skill-hello-example" data-t="way_cs_btn"></a></div>
+  <div class="card"><div class="icon">💻</div><h3 data-t="way_pc_h"></h3><p data-t="way_pc_p"></p>
+    <a class="open small ghost" href="https://github.com/emkay-voice/ovos-skill-hello-example#three-ways-to-start" data-t="way_pc_btn"></a></div>
+</div>
+
+<h2 id="browser" data-t="browser_h"></h2>
+<p class="lead" data-t="browser_lead"></p>
+<div class="card">
+  <ol class="steps">
+    <li data-t="browser_1"></li>
+    <li data-t="browser_2"></li>
+    <li data-t="browser_3"></li>
+    <li data-t="browser_4"></li>
+    <li data-t="browser_5"></li>
+    <li data-t="browser_6"></li>
+  </ol>
+</div>
+
+<h2 data-t="skill_h"></h2>
+<p class="lead" data-t="skill_lead"></p>
+<div class="files">
+  <div class="file"><div class="name">locale/<span data-t="ex_lang"></span>/hello.intent</div>
+    <pre><span data-t="ex_intent1"></span>
+<span data-t="ex_intent2"></span></pre><p data-t="file_intent"></p></div>
+  <div class="file"><div class="name">locale/<span data-t="ex_lang"></span>/hello.dialog</div>
+    <pre data-t="ex_dialog"></pre><p data-t="file_dialog"></p></div>
+  <div class="file"><div class="name">__init__.py</div>
+    <pre>@intent_handler("hello.intent")
+def handle_hello(self, message):
+    self.speak_dialog("hello")</pre><p data-t="file_code"></p></div>
+  <div class="file"><div class="name">test/end2end/golden_utterances_<span data-t="ex_lang"></span>.jsonl</div>
+    <pre>{"utterance": "<span data-t="ex_intent2"></span>",
+ "intent_label": "hello.intent", …}</pre><p data-t="file_golden"></p></div>
+</div>
+
+<h2 data-t="tpl_h"></h2>
+<p class="lead" data-t="tpl_lead"></p>
+<div class="cards" id="templates"></div>
+
+<h2 data-t="tests_h"></h2>
+<div class="card"><p data-t="tests_p"></p></div>
+
+<!-- What's happening? in Emkay (emkay#50): the first place to look when a
+     skill does not answer; the screenshot follows the page's language -->
+<h2 id="watch" data-t="watch_h"></h2>
+<div class="card watch">
+  <img id="watch-shot" src="../img/activity-en.png" data-t-alt="watch_alt" width="500" height="789" loading="lazy">
+  <div>
+    <p data-t="watch_p"></p>
+    <p class="small" data-t="watch_note"></p>
+  </div>
+</div>
+
+<!-- the skill on your own phone: from GitHub, with Emkay: Send to my Emkay
+     (vscode-emkay) and Emkay's ?install=github:owner/repo (emkay#49) -->
+<h2 id="github" data-t="phone_h"></h2>
+<p class="lead" data-t="phone_lead"></p>
+<div class="card">
+  <ol class="steps">
+    <li data-t="phone_1"></li>
+    <li data-t="phone_2"></li>
+    <li data-t="phone_3"></li>
+    <li data-t="phone_4"></li>
+  </ol>
+  <p class="small" data-t="phone_note"></p>
+</div>
+
+<!-- See my skill (dev#2): skills people show, found by the topic emkay-skill
+     (tools/build_gallery.mjs, rebuilt every few hours) – not tested, not a store -->
+<h2 id="gallery" data-t="gal_h"></h2>
+<p class="lead" data-t="gal_lead"></p>
+<div class="cards" id="gallery-cards"></div>
+<p class="gal-all"><a id="gallery-all" class="open ghost" href="../gallery/" hidden></a></p>
+<div class="card"><p data-t="gal_how"></p><p data-t="gal_how_dev"></p><p class="small" data-t="gal_away"></p></div>
+
+<!-- a fork, and back as a pull request: how a skill gets better -->
+<h2 id="fork" data-t="gal_fork_h"></h2>
+<div class="card" data-t="gal_fork"></div>
+
+<!-- into the store by itself: Klondike finds it (topics), PyPI + a release
+     (Looks Complete), the store's nightly test in a real Emkay -->
+<h2 id="store" data-t="next_h"></h2>
+<p class="lead" data-t="next_p"></p>
+<div class="card">
+  <ol class="steps">
+    <li data-t="next_1"></li>
+    <li data-t="next_2"></li>
+    <li data-t="next_3"></li>
+  </ol>
+  <p class="small" data-t="next_more"></p>
+</div>
+
+<!-- Help (dev#3): when it doesn't work, where to ask (Matrix, discussions –
+     not issues), where to read; Emkay: Get help in the extension opens it -->
+<h2 id="help" data-t="help_h"></h2>
+<p class="lead" data-t="help_lead"></p>
+<div class="help-grid">
+  <div class="card help"><h3 data-t="help_fix_h"></h3><ul>
+    <li data-t="help_fix_1"></li><li data-t="help_fix_2"></li><li data-t="help_fix_3"></li>
+    <li data-t="help_fix_4"></li><li data-t="help_fix_5"></li><li data-t="help_fix_6"></li></ul></div>
+  <div class="card help"><h3 data-t="help_ask_h"></h3><ul>
+    <li data-t="help_ask_1"></li><li data-t="help_ask_2"></li><li data-t="help_ask_3"></li></ul>
+    <p class="small" data-t="help_ask_note"></p>
+    <h3 data-t="help_read_h"></h3><ul>
+    <li data-t="help_read_1"></li><li data-t="help_read_2"></li><li data-t="help_read_3"></li>
+    <li data-t="help_read_4"></li><li data-t="help_read_5"></li><li data-t="help_read_6"></li></ul></div>
+</div>
+
+<footer>
+  <p><a href="https://github.com/emkay-voice/code">Emkay Code</a> · <a href="https://blocks.emkay.ai/">Emkay Blocks</a> ·
+     <a href="https://github.com/emkay-voice/ovos-skill-hello-example" data-t="f_template"></a> ·
+     <a href="https://github.com/andlo/ovos-tui-client">ovos-tui-client</a> ·
+     <a href="https://emkay.ai/">emkay.ai</a> ·
+     <a href="https://store.emkay.ai/" data-t="f_store"></a> ·
+     <a href="https://openvoiceos.github.io/ovos-technical-manual/">OVOS technical manual</a></p>
+  <p data-t="f_note"></p>
+</footer>
+</main>
+
+<script src="../texts.js"></script>
+<script src="../gallery.js"></script>
+<script>
+// The page's language: ?lang=, then the one picked before (shared with
+// emkay.ai), then the browser's; English for any text a language lacks.
+const LANGS = Object.keys(TEXTS);
+function pickLang() {
+  const q = new URLSearchParams(location.search).get("lang");
+  let saved = null;
+  try { saved = localStorage.getItem("emkay-site-lang"); } catch {}
+  for (const want of [q, saved, ...(navigator.languages || [navigator.language])]) {
+    if (!want) continue;
+    const w = want.toLowerCase();
+    const hit = LANGS.find((l) => l.toLowerCase() === w) || LANGS.find((l) => l.split("-")[0] === w.split("-")[0]);
+    if (hit) return hit;
+  }
+  return "en";
+}
+let lang = pickLang();
+const t = (key) => TEXTS[lang][key] ?? TEXTS.en[key];
+
+// The templates (templates/index.json, made by tools/build_templates.mjs from
+// templates.json); names and descriptions per language, English as fallback.
+let templates = [];
+fetch("../templates/index.json").then((r) => r.ok ? r.json() : []).then((list) => { templates = list; renderTemplates(); })
+  .catch(() => {});
+const pick = (o) => (o && (o[lang] ?? o[lang.split("-")[0]] ?? o.en)) || "";
+
+function renderTemplates() {
+  const box = document.getElementById("templates");
+  box.innerHTML = "";
+  for (const tpl of templates) {
+    const card = document.createElement("div");
+    card.className = "card tpl";
+    card.innerHTML = `<div class="icon">${tpl.icon || "🧩"}</div><h3></h3><p class="meta"></p><p></p>
+      <a class="open small ghost" href="https://github.com/${tpl.repo}"></a>`;
+    card.querySelector("h3").textContent = pick(tpl.name);
+    card.querySelector(".meta").textContent = `${t("tpl_kind_" + tpl.kind) || tpl.kind} · ${tpl.repo}`;
+    card.querySelectorAll("p")[1].textContent = pick(tpl.description);
+    card.querySelector("a").textContent = t("tpl_open");
+    box.append(card);
+  }
+  const soon = document.createElement("div");
+  soon.className = "card tpl soon";
+  soon.innerHTML = `<div class="icon">➕</div><h3></h3><p></p>`;
+  soon.querySelector("h3").textContent = t("tpl_more_h");
+  soon.querySelector("p").innerHTML = t("tpl_more_p");
+  box.append(soon);
+}
+
+// See my skill (gallery/skills.json, gallery.js): the three last updated here,
+// all of them – to search and sort – on gallery/
+let gallery = null;
+Gallery.load("../").then((g) => { gallery = g; renderGallery(); });
+function renderGallery() {
+  const box = document.getElementById("gallery-cards");
+  box.innerHTML = "";
+  const skills = [...(gallery?.skills || [])].sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
+  if (!skills.length) {
+    const p = document.createElement("p");
+    p.className = "gal-empty";
+    p.innerHTML = t("gal_empty");
+    box.append(p);
+  }
+  for (const s of skills.slice(0, 3)) box.append(Gallery.card(s, t, lang));
+  const all = document.getElementById("gallery-all");
+  all.textContent = t("gal_see_all").replace("{n}", skills.length);
+  all.hidden = !skills.length;
+}
+
+function render() {
+  document.documentElement.lang = lang;
+  document.title = t("title");
+  document.querySelector('meta[name="description"]').content = t("description");
+  // texts may hold <b>, <code>, <kbd> and links: they are ours, from texts.js
+  document.querySelectorAll("[data-t]").forEach((el) => { el.innerHTML = t(el.dataset.t); });
+  document.querySelectorAll("[data-t-alt]").forEach((el) => { el.alt = t(el.dataset.tAlt); });
+  // the What's happening? screenshot: Danish for Danish, else English
+  document.getElementById("watch-shot").src = lang === "da" ? "../img/activity-da.png" : "../img/activity-en.png";
+  renderTemplates();
+  renderGallery();
+}
+
+// a <code class="copy"> copies itself when clicked (the extension's address)
+document.addEventListener("click", async (e) => {
+  const el = e.target.closest(".copy");
+  if (!el) return;
+  try { await navigator.clipboard.writeText(el.textContent); el.classList.add("done"); setTimeout(() => el.classList.remove("done"), 1500); } catch {}
+});
+
+const picker = document.getElementById("lang");
+for (const l of LANGS) picker.append(new Option(TEXTS[l]._name, l));
+picker.value = lang;
+picker.onchange = () => {
+  lang = picker.value;
+  try { localStorage.setItem("emkay-site-lang", lang); } catch {}
+  render();
+};
+render();
+
+// The demo: a new sentence is typed into hello.intent and saved, the skill
+// runs in Emkay again, the sentence is typed to Emkay, and Emkay answers.
+// Plain SVG; nothing loads, nothing is sent.
+(() => {
+  const demo = document.getElementById("demo");
+  const $ = (id) => document.getElementById(id);
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const SMILE = "M420 196 Q445 214 470 196";
+  const BIG = "M416 192 Q445 226 474 192";
+  const open = (h) => `M424 198 Q445 ${198 + h} 466 198 Q445 ${198 + h * 0.35} 424 198 Z`;
+  const say = (text, cls = "") => {
+    const out = [""];
+    for (const w of text.split(" ")) {
+      if ((out.at(-1) + " " + w).trim().length > 30 && out.length < 2) out.push("");
+      out[out.length - 1] = (out.at(-1) + " " + w).trim();
+    }
+    [$("cap1"), $("cap2")].forEach((el, i) => { el.textContent = out[i] || ""; el.setAttribute("class", "caption " + cls); });
+  };
+  const cls = (s) => demo.setAttribute("class", "demo " + s);
+  (async function blink() {
+    while (true) {
+      await sleep(2500 + Math.random() * 3000);
+      if (demo.classList.contains("thinking")) continue;
+      demo.classList.add("blink"); await sleep(140); demo.classList.remove("blink");
+    }
+  })();
+  async function type(el, text, ms = 70) {
+    el.textContent = "";
+    for (const ch of text) { el.textContent += ch; await sleep(ms + Math.random() * 40); }
+  }
+  async function loop() {
+    if (still) { $("typed").textContent = t("demo_line"); say(t("demo_answer")); return; }
+    while (true) {
+      cls(""); say(""); $("typed").textContent = ""; $("input").textContent = ""; $("mouth").setAttribute("d", SMILE);
+      $("status").textContent = "✓ Emkay: ovos-skill-hello";
+      await sleep(1500);
+      await type($("typed"), t("demo_line"));
+      await sleep(500);
+      cls("saved"); $("status").textContent = "⟳ Emkay: ovos-skill-hello";
+      await sleep(1100);
+      $("status").textContent = "✓ Emkay: ovos-skill-hello";
+      await sleep(500);
+      cls("");
+      $("input").setAttribute("fill", "#fff");
+      await type($("input"), t("demo_line"), 45);
+      await sleep(400);
+      $("input").textContent = "";
+      say(`“${t("demo_line")}”`, "said");
+      await sleep(1500);
+      cls("thinking"); say("");
+      await sleep(800);
+      cls("");
+      say(t("demo_answer"));
+      const end = Date.now() + 2600;
+      while (Date.now() < end) { $("mouth").setAttribute("d", open(5 + Math.random() * 16)); await sleep(90 + Math.random() * 70); }
+      $("mouth").setAttribute("d", BIG); cls("happy");
+      await sleep(2200);
+    }
+  }
+  loop();
+})();
+</script>
+</body>
+</html>

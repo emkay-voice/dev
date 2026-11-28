@@ -1,4 +1,4 @@
-// Build the template catalog for "Emkay: New skill" (the Emkay Dev extension).
+// Build the template catalog for "Emkay: New skill" (the Emkay Code extension).
 //
 //   node tools/build_templates.mjs <out dir>          (out dir: _site/templates)
 //
