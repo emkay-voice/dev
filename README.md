@@ -10,6 +10,7 @@ as [emkay.ai](https://github.com/emkay-voice/emkay-voice.github.io):
 | What | Where |
 |---|---|
 | Emkay Dev, the way in: blocks or code | `index.html` |
+| Emkay Blocks: the blocks way, with examples | `blocks/index.html` (the examples come from blocks.emkay.ai) |
 | Emkay Code: the VS Code way, step by step | `code/index.html` (the old front page's links, `/#help` …, go on there) |
 | Every text, by language | `texts.js` (`hub_*` for the way in) |
 | Templates for *Emkay: New skill* | `templates.json` → `templates/<id>.json` + `templates/index.json`, built by `tools/build_templates.mjs` from each template's own repository |

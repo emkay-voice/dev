@@ -48,7 +48,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html texts.js gallery.js icon.svg CNAME _site/
-          mkdir -p _site/code && cp code/index.html _site/code/
+          mkdir -p _site/code _site/blocks && cp code/index.html _site/code/ && cp blocks/index.html _site/blocks/
           mkdir -p _site/gallery && cp gallery/index.html _site/gallery/
           cp -r img _site/
       - name: The template catalog
