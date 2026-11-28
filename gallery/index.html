@@ -39,12 +39,17 @@
   .open { display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
           padding: 8px 16px; border-radius: 99px; font-size: 14px; }
   .card .open { color: #fff; }
+  button.open { border: 0; cursor: pointer; font: inherit; }
   .open:hover { background: var(--accent-strong); }
   .open.ghost { background: #1b2430; }
   .gal .who { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin: 0 0 10px; }
   .gal .who img { width: 22px; height: 22px; border-radius: 50%; }
   .gal .tag { display: inline-block; font-size: 12px; color: #e8c27a; border: 1px solid #6b5a33; border-radius: 99px; padding: 1px 8px; margin-left: auto; }
   .gal .ex { color: #fff; font-style: italic; }
+  .gal pre.py { display: none; margin: 0 0 10px; padding: 10px; background: #0a0d11; border: 1px solid var(--line); border-radius: 10px;
+    font: 12px/1.5 ui-monospace, Menlo, monospace; color: #d4d4d4; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .gal.showpy pre.py { display: block; }
+  .gal .sig { font: 13px ui-monospace, Menlo, monospace; color: #dcdcaa; }
   .gal .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
   .empty { color: var(--muted); grid-column: 1 / -1; }
   h2 { font-weight: 400; font-size: 24px; margin: 40px 0 6px; }
@@ -76,6 +81,12 @@
   <span class="count" id="count"></span>
 </div>
 <div class="cards" id="cards"></div>
+
+<!-- the blocks gallery: blocks made in Emkay Blocks and shared (tools/build_gallery.mjs,
+     gallery/blocks.json) – each a small Python function; Blocks shows all of it before use -->
+<h2 id="blocks" data-t="gal_bl_h"></h2>
+<p class="lead" data-t="gal_bl_lead"></p>
+<div class="cards" id="blocks-cards"></div>
 
 <!-- the examples to start from: the templates (templates/index.json, the same
      list as Emkay: New skill) – theirs is the topic-free side of the page, so a
@@ -184,6 +195,45 @@ function showExamples() {
   }
 }
 
+// the blocks gallery: gallery/blocks.json
+let shared = [];
+function showBlocks() {
+  const box = $("blocks-cards");
+  box.replaceChildren();
+  const q = $("q").value.trim().toLowerCase();
+  const list = shared.filter((b) => !q || q.split(/\s+/).every((w) =>
+    [b.name, b.description, b.owner, b.repo, b.code].join(" ").toLowerCase().includes(w)));
+  if (!list.length) {
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.innerHTML = t("gal_bl_empty");
+    box.append(p);
+  }
+  for (const b of list) {
+    const el = document.createElement("div");
+    el.className = "card gal";
+    el.innerHTML = `<div class="icon">🧩</div><h3></h3><p class="who"><img alt="" loading="lazy"><span></span></p>
+      <p class="sig"></p><p class="about"></p><p class="small from"></p><pre class="py"></pre><div class="btns"></div>`;
+    el.querySelector("h3").textContent = b.name;
+    el.querySelector(".who img").src = b.avatar + (b.avatar.includes("?") ? "&" : "?") + "s=44";
+    el.querySelector(".who span").textContent = b.owner;
+    el.querySelector(".sig").textContent = `${b.name}(${b.inputs.map((i) => i.name).join(", ")})${b.kind === "value" ? " →" : ""}`;
+    el.querySelector(".about").textContent = b.description;
+    el.querySelector(".from").textContent = t(b.from.includes("#") ? "gal_bl_skill" : "gal_bl_file").replace("{repo}", b.repo);
+    el.querySelector(".py").textContent = b.code + (b.packages.length ? `\n\n# ${b.packages.join(", ")}` : "");
+    const btns = el.querySelector(".btns");
+    const use = document.createElement("a");
+    use.className = "open small"; use.target = "_blank"; use.rel = "noopener";
+    use.href = `https://blocks.emkay.ai/?block=${encodeURIComponent(b.from)}&lang=${encodeURIComponent(lang)}`;
+    use.textContent = t("gal_bl_use");
+    const code = document.createElement("button");
+    code.type = "button"; code.className = "open small ghost"; code.textContent = t("gal_bl_code");
+    code.onclick = () => el.classList.toggle("showpy");
+    btns.append(use, code);
+    box.append(el);
+  }
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.title = `${t("gal_h")} – Emkay Dev`;
@@ -191,6 +241,7 @@ function render() {
   document.querySelectorAll("[data-t-ph]").forEach((el) => { el.placeholder = t(el.dataset.tPh); });
   langNames();
   show();
+  showBlocks();
   showExamples();
 }
 
@@ -202,11 +253,13 @@ picker.onchange = () => {
   try { localStorage.setItem("emkay-site-lang", lang); } catch {}
   render();
 };
-$("q").oninput = show;
+$("q").oninput = () => { show(); showBlocks(); };
 $("langs").onchange = show;
 $("sort").onchange = show;
 render();
 Gallery.load("../").then((g) => { gallery = g; show(); });
+fetch("blocks.json").then((r) => r.ok ? r.json() : { blocks: [] }).catch(() => ({ blocks: [] }))
+  .then((g) => { shared = g.blocks || []; showBlocks(); });
 fetch("../templates/index.json").then((r) => r.ok ? r.json() : []).catch(() => [])
   .then((list) => { examples = list; showExamples(); });
 </script>

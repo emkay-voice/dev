@@ -16,6 +16,12 @@
 // found any more. gallery-hidden.json lists repositories kept out by hand.
 //
 // Nothing here is tested: the cards say so. Tested skills are in the store.
+//
+// The blocks gallery (<out>/blocks.json): blocks people made in Emkay Blocks
+// and shared – the blocks of a skill above that was made in Blocks (its
+// blocks.json), and *.emkay-block.json files in repositories with the topic
+// `emkay-block`. Each is a small Python function; Blocks shows all of it
+// before it is used (blocks.emkay.ai/?block=…).
 import fs from "fs";
 import path from "path";
 
@@ -48,6 +54,17 @@ for (let page = 1; page <= 10 && found.length < MAX; page++) {
 }
 
 const cards = [];
+const blocks = [];
+/** A shared block as the gallery shows it: what Blocks needs to offer it, and where it is from. */
+function blockCard(r, b, from) {
+  if (!b || typeof b.name !== "string" || typeof b.code !== "string" || !Array.isArray(b.inputs)) return;
+  blocks.push({
+    repo: r.full_name, url: r.html_url, owner: r.owner.login, avatar: r.owner.avatar_url, updated: r.pushed_at, from,
+    name: b.name.slice(0, 40), description: String(b.description || "").slice(0, 300), kind: b.kind === "value" ? "value" : "do",
+    inputs: b.inputs.slice(0, 8).map((i) => ({ name: String(i.name || "").slice(0, 30), type: i.type === "number" ? "number" : "text" })),
+    code: b.code.slice(0, 4000), packages: (Array.isArray(b.packages) ? b.packages : []).map(String).slice(0, 10),
+  });
+}
 for (const r of found.slice(0, MAX)) {
   const repo = r.full_name;
   if (OURS.test(repo) || hidden.has(repo.toLowerCase())) continue;
@@ -66,6 +83,13 @@ for (const r of found.slice(0, MAX)) {
       if (m[2] === "skill.json") skillJson[lang] = f;
     }
     if (!langs.size) continue;   // not a skill (no sentences in any language)
+    // made in Emkay Blocks: its own blocks are in its blocks.json
+    if (files.includes("blocks.json")) {
+      try {
+        const p = JSON.parse(await raw(repo, ref, "blocks.json"));
+        for (const b of p.myBlocks || []) blockCard(r, b, `${repo}#${b.id}`);
+      } catch { /* not one of Blocks' */ }
+    }
     const name = {}, description = {}, examples = {};
     for (const [lang, f] of Object.entries(skillJson)) {
       try {
@@ -86,6 +110,23 @@ for (const r of found.slice(0, MAX)) {
     console.log(`${repo}: skipped (${e.message})`);
   }
 }
+// repositories of blocks: *.emkay-block.json files, the topic emkay-block
+const BLOCK_TOPIC = process.env.GALLERY_BLOCK_TOPIC || "emkay-block";
+try {
+  const res = await api(`/search/repositories?q=${encodeURIComponent(`topic:${BLOCK_TOPIC} fork:true archived:false is:public`)}&sort=updated&per_page=100`);
+  for (const r of res.items) {
+    if (hidden.has(r.full_name.toLowerCase())) continue;
+    try {
+      const tree = await api(`/repos/${r.full_name}/git/trees/${encodeURIComponent(r.default_branch)}?recursive=1`);
+      for (const f of (tree.tree || []).map((x) => x.path).filter((x) => x.endsWith(".emkay-block.json")).slice(0, 50)) {
+        try { blockCard(r, JSON.parse(await raw(r.full_name, r.default_branch, f)), `${r.full_name}/${f}`); } catch {}
+      }
+    } catch (e) { console.log(`${r.full_name}: skipped (${e.message})`); }
+  }
+} catch (e) { console.log(`blocks: ${e.message}`); }
+
 fs.mkdirSync(out, { recursive: true });
+fs.writeFileSync(path.join(out, "blocks.json"), JSON.stringify({ built: new Date().toISOString(), blocks }, null, 1));
+console.log(`gallery: ${blocks.length} blocks`);
 fs.writeFileSync(path.join(out, "skills.json"), JSON.stringify({ built: new Date().toISOString(), skills: cards }, null, 1));
 console.log(`gallery: ${cards.length} skills`);
